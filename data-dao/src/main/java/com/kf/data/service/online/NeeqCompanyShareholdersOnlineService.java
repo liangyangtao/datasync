@@ -1,9 +1,5 @@
 package com.kf.data.service.online;
 
-import java.util.List;
-
-import com.kf.data.mybatis.entity.online.NeeqCompanyShareholdersOnline;
-
 /**  
  * @Title:  NeeqCompanyShareholdersOnlineService.java   
  * @Package com.kf.data.service.online   
@@ -15,5 +11,5 @@ import com.kf.data.mybatis.entity.online.NeeqCompanyShareholdersOnline;
 
 public interface NeeqCompanyShareholdersOnlineService {
 	
-	public List<NeeqCompanyShareholdersOnline> readNeeqCompanyShareholdersOnlines();
+//	public List<NeeqCompanyShareholdersOnline> readNeeqCompanyShareholdersOnlines();
 }

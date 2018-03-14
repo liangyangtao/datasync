@@ -15,7 +15,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 public class DataServer {
 	
-	public static void main(String[] args) {
-		SpringApplication.run(DataServer.class);
+	public static void main(String[] args) {  
+//		String[] args2 = new String[] { "--spring.profiles.active=" };
+		SpringApplication.run(DataServer.class,args);
 	}
 }

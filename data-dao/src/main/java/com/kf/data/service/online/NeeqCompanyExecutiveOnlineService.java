@@ -11,6 +11,7 @@ package com.kf.data.service.online;
 import java.util.List;
 
 import com.kf.data.mybatis.entity.online.NeeqCompanyExecutiveOnline;
+import com.kf.data.mybatis.entity.online.TdxUpIndexOnline;
 
 /**
  * @Title: NeeqCompanyExecutiveOnlineService.java
@@ -22,5 +23,7 @@ import com.kf.data.mybatis.entity.online.NeeqCompanyExecutiveOnline;
  */
 public interface NeeqCompanyExecutiveOnlineService {
 	public List<NeeqCompanyExecutiveOnline> readNeeqCompanyExecutiveOnlines();
+
+	public List<NeeqCompanyExecutiveOnline> readNeeqCompanyExecutiveOnlines(TdxUpIndexOnline tdxUpIndexOnline);
 
 }

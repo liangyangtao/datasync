@@ -30,8 +30,8 @@
 
 		<table schema="crawler" tableName="tdx_company_executive"
 			domainObjectName="TdxCompanyExecutive">
-			<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"
-				identity="true" type="post" />
+			<!-- <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"
+				identity="true" type="post" /> -->
 			<!-- <columnOverride column="status" jdbcType="TINYINT"
 				javaType="Byte">
 			</columnOverride> -->

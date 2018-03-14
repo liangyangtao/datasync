@@ -2,6 +2,7 @@ package com.kf.data.config;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -22,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan({ "com.kf.data" })
 @PropertySource(value = { "classpath:application.properties" })
-@MapperScan({ "com.kf.data.mybatis.mapper.*" })
+@MapperScan({ "com.kf.data.mybatis.mapper" })
 public class MyBatisConfiguration {
 
 	@Autowired
@@ -117,7 +118,7 @@ public class MyBatisConfiguration {
 	public SqlSessionFactory sessionFactory(DynamicDataSource dataSource) throws Exception {
 		SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
 		sessionFactoryBean.setDataSource(dataSource);
-		sessionFactoryBean.setTypeAliasesPackage("com.kf.data.mybatis.entity");
+		sessionFactoryBean.setTypeAliasesPackage("com.kf.data.mybatis.entity.*.*");
 		return sessionFactoryBean.getObject();
 	}
 
@@ -127,6 +128,12 @@ public class MyBatisConfiguration {
 		DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
 		dataSourceTransactionManager.setDataSource(dataSource);
 		return dataSourceTransactionManager;
+	}
+
+	@Bean
+	public ScheduledThreadPoolExecutor scheduledThreadPoolExecutor() {
+		ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(128);
+		return scheduledThreadPoolExecutor;
 	}
 
 }

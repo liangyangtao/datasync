@@ -26,8 +26,9 @@ public class TdxUpIndexOnlineServiceImpl implements TdxUpIndexOnlineService {
 
 	@Override
 	public void saveTdxUpIndexOnline(TdxUpIndexOnline tdxUpIndex) {
+
 		TdxUpIndexOnlineExample example = new TdxUpIndexOnlineExample();
-		example.or().andTableEqualTo(tdxUpIndex.getTable());
+		example.or().andTableNameEqualTo(tdxUpIndex.getTableName());
 		if (tdxUpIndexOnlineMapper.countByExample(example) > 0) {
 			tdxUpIndexOnlineMapper.updateByExample(tdxUpIndex, example);
 		} else {
@@ -39,7 +40,11 @@ public class TdxUpIndexOnlineServiceImpl implements TdxUpIndexOnlineService {
 	@Override
 	public List<TdxUpIndexOnline> readTdxUpIndexOnlineByTableName(String tableName) {
 		TdxUpIndexOnlineExample example = new TdxUpIndexOnlineExample();
-		example.or().andTableEqualTo(tableName);
+		try {
+			example.or().andTableNameEqualTo(tableName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return tdxUpIndexOnlineMapper.selectByExample(example);
 	}
 
