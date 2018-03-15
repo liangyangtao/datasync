@@ -11,7 +11,7 @@ import com.kf.data.service.tdx.TdxCompanyExecutiveService;
 /**
  * @Title: TdxCompanyExecutiveServiceImpl.java
  * @Package com.kf.data.service.tdx.impl
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 高管
  * @author: liangyt
  * @date: 2018年3月14日 下午3:58:04
  * @version V1.0
@@ -26,7 +26,9 @@ public class TdxCompanyExecutiveServiceImpl implements TdxCompanyExecutiveServic
 	@Override
 	public void saveTdxCompanyExecutive(TdxCompanyExecutive tdxCompanyExecutive) {
 		TdxCompanyExecutiveExample example = new TdxCompanyExecutiveExample();
-		example.or().andIdEqualTo(tdxCompanyExecutive.getId());
+		example.or().andStockCodeEqualTo(tdxCompanyExecutive.getStockCode())
+				.andNameEqualTo(tdxCompanyExecutive.getName())
+				.andReportDateEqualTo(tdxCompanyExecutive.getReportDate());
 		if (tdxCompanyExecutiveMapper.countByExample(example) > 0) {
 			tdxCompanyExecutiveMapper.updateByExampleSelective(tdxCompanyExecutive, example);
 		} else {

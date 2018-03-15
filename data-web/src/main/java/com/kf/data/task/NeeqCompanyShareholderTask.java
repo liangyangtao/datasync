@@ -60,7 +60,6 @@ public class NeeqCompanyShareholderTask {
 			for (NeeqCompanyShareholdersOnline neeqCompanyShareholdersOnline : neeqCompanyShareholdersOnlines) {
 
 				try {
-					// 先保存高管基本信息
 					TdxCompanyShareholders tdxCompanyShareholders = new TdxCompanyShareholders();
 					tdxCompanyShareholders.setCompanyId(neeqCompanyShareholdersOnline.getCompanyId());
 					tdxCompanyShareholders.setCompanyShortname(neeqCompanyShareholdersOnline.getCompanyName());
@@ -72,7 +71,6 @@ public class NeeqCompanyShareholderTask {
 					tdxCompanyShareholders.setStockCode(neeqCompanyShareholdersOnline.getStockCode());
 					// tdxCompanyShareholders.setUpdatedAt(updatedAt);
 					tdxCompanyShareholders.setStockholderDescribe(neeqCompanyShareholdersOnline.getStockholderType());
-					// 保存高管履历
 					List<NeeqCompanyShareholdersContributiveOnline> neeqCompanyShareholdersContributives = neeqCompanyShareholdersContributiveOnlineService
 							.readNeeqCompanyShareholdersContributiveOnlineById(
 									neeqCompanyShareholdersOnline.getStockholderId());
@@ -86,11 +84,11 @@ public class NeeqCompanyShareholderTask {
 				}
 			}
 			try {
-				NeeqCompanyShareholdersOnline NeeqCompanyShareholdersOnline = neeqCompanyShareholdersOnlines
+				NeeqCompanyShareholdersOnline neeqCompanyShareholdersOnline = neeqCompanyShareholdersOnlines
 						.get(neeqCompanyShareholdersOnlines.size() - 1);
 				tdxUpIndexOnline.setTableName(tableName);
-				tdxUpIndexOnline.setUpid(NeeqCompanyShareholdersOnline.getId());
-				tdxUpIndexOnline.setUptime(NeeqCompanyShareholdersOnline.getUpdatedAt());
+				tdxUpIndexOnline.setUpid(neeqCompanyShareholdersOnline.getId());
+				tdxUpIndexOnline.setUptime(neeqCompanyShareholdersOnline.getUpdatedAt());
 				tdxUpIndexOnlineService.saveTdxUpIndexOnline(tdxUpIndexOnline);
 			} catch (Exception e) {
 				e.printStackTrace();

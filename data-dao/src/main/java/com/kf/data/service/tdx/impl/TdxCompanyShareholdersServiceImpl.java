@@ -25,7 +25,9 @@ public class TdxCompanyShareholdersServiceImpl implements TdxCompanyShareholders
 	@Override
 	public void saveTdxCompanyShareholders(TdxCompanyShareholders tdxCompanyShareholders) {
 		TdxCompanyShareholdersExample example = new TdxCompanyShareholdersExample();
-		example.or().andIdEqualTo(tdxCompanyShareholders.getId());
+		example.or().andStockCodeEqualTo(tdxCompanyShareholders.getStockCode())
+				.andNameEqualTo(tdxCompanyShareholders.getName())
+				.andReportDateEqualTo(tdxCompanyShareholders.getReportDate());
 		if (tdxCompanyShareholdersMapper.countByExample(example) > 0) {
 			tdxCompanyShareholdersMapper.updateByExampleSelective(tdxCompanyShareholders, example);
 		} else {

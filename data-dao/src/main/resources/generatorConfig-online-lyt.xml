@@ -27,8 +27,8 @@
 		<javaClientGenerator targetPackage="com.kf.data.mybatis.mapper.online"
 			targetProject="data-dao\src\main\java" type="XMLMAPPER">
 		</javaClientGenerator>
-		<table schema="crawler" tableName="neeq_company_executive"
-			domainObjectName="NeeqCompanyExecutiveOnline">
+		<table schema="crawler" tableName="neeq_events_issue_effect"
+			domainObjectName="NeeqEventsIssueEffectOnline">
 			<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"
 				identity="true" type="post" />
 			 <columnOverride column="status" jdbcType="TINYINT"
