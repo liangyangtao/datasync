@@ -40,9 +40,11 @@ public class NeeqCompanyBusinessModelOnlineServiceImpl implements NeeqCompanyBus
 		if (neeqCompanyBusinessModelOnlines.size() > 0) {
 
 		} else {
-			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
-			example.setOrderByClause("id asc limit 1");
-			neeqCompanyBusinessModelOnlines = neeqCompanyBusinessModelOnlineMapper.selectByExample(example);
+			if (tdxUpIndexOnline.getUptime() != null) {
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
+				example.setOrderByClause("id asc limit 1");
+				neeqCompanyBusinessModelOnlines = neeqCompanyBusinessModelOnlineMapper.selectByExample(example);
+			}
 		}
 		return neeqCompanyBusinessModelOnlines;
 	}

@@ -27,8 +27,8 @@ import com.kf.data.service.tdx.TdxCompanyExecutiveService;
  * @version V1.0
  */
 
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class NeeqCompanyExecutiveTask {
 
 	private static String tableName = "neeq_company_executive";
@@ -50,7 +50,6 @@ public class NeeqCompanyExecutiveTask {
 
 	@Scheduled(fixedDelay = 1000)
 	public void executiveSyncTask() {
-
 		List<TdxUpIndexOnline> tdxUpIndexs = tdxUpIndexOnlineService.readTdxUpIndexOnlineByTableName(tableName);
 		TdxUpIndexOnline tdxUpIndexOnline = null;
 		if (tdxUpIndexs.size() > 0) {
@@ -71,7 +70,6 @@ public class NeeqCompanyExecutiveTask {
 					tdxCompanyExecutive.setCompanyShortname(neeqCompanyExecutiveOnline.getCompanyName());
 					tdxCompanyExecutive.setEducation(neeqCompanyExecutiveOnline.getEducation());
 					tdxCompanyExecutive.setGender(neeqCompanyExecutiveOnline.getGender());
-					tdxCompanyExecutive.setId(neeqCompanyExecutiveOnline.getId());
 					tdxCompanyExecutive.setName(neeqCompanyExecutiveOnline.getName());
 					tdxCompanyExecutive.setNationality(neeqCompanyExecutiveOnline.getNationality());
 					tdxCompanyExecutive.setReportDate(neeqCompanyExecutiveOnline.getReportDate());
@@ -80,20 +78,17 @@ public class NeeqCompanyExecutiveTask {
 					tdxCompanyExecutive.setTitle(neeqCompanyExecutiveOnline.getTitle());
 					// tdxCompanyExecutive.setUpdatedAt(updatedAt);
 					tdxCompanyExecutiveService.saveTdxCompanyExecutive(tdxCompanyExecutive);
-
 					// 保存高管履历
 					List<NeeqCompanyExecutiveResumeOnline> neeqCompanyExecutiveResumeOnlines = neeqCompanyExecutiveResumeOnlineService
 							.readNeeqCompanyExecutiveResumeOnlineById(neeqCompanyExecutiveOnline.getPersonId());
-
 					if (neeqCompanyExecutiveResumeOnlines.size() > 0) {
 						TdxCompanyExecutiveResume tdxCompanyExecutiveResume = new TdxCompanyExecutiveResume();
 						// tdxCompanyExecutiveResume.setId(id);
-						tdxCompanyExecutiveResume.setPersonId(neeqCompanyExecutiveOnline.getId());
+						tdxCompanyExecutiveResume.setPersonId(tdxCompanyExecutive.getId());
 						tdxCompanyExecutiveResume
 								.setPersonPost(neeqCompanyExecutiveResumeOnlines.get(0).getPersonPost());
 						tdxCompanyExecutiveResumeService.saveTdxCompanyExecutiveResume(tdxCompanyExecutiveResume);
 					}
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

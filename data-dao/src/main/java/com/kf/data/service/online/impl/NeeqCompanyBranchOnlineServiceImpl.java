@@ -40,9 +40,11 @@ public class NeeqCompanyBranchOnlineServiceImpl implements NeeqCompanyBranchOnli
 		if (neeqCompanyBranchOnlines.size() > 0) {
 
 		} else {
-			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
-			example.setOrderByClause("id asc limit 1");
-			neeqCompanyBranchOnlines = neeqCompanyBranchOnlineMapper.selectByExample(example);
+			if (tdxUpIndexOnline.getUptime() != null) {
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
+				example.setOrderByClause("id asc limit 1");
+				neeqCompanyBranchOnlines = neeqCompanyBranchOnlineMapper.selectByExample(example);
+			}
 		}
 		return neeqCompanyBranchOnlines;
 	}

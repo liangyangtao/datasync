@@ -41,9 +41,11 @@ public class NeeqCompanyBusinessIncomeOnlineServiceImpl implements NeeqCompanyBu
 		if (neeqCompanyBusinessIncomeOnlines.size() > 0) {
 
 		} else {
-			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
-			example.setOrderByClause("id asc limit 1");
-			neeqCompanyBusinessIncomeOnlines = neeqCompanyBusinessIncomeOnlineMapper.selectByExample(example);
+			if (tdxUpIndexOnline.getUptime() != null) {
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
+				example.setOrderByClause("id asc limit 1");
+				neeqCompanyBusinessIncomeOnlines = neeqCompanyBusinessIncomeOnlineMapper.selectByExample(example);
+			}
 		}
 		return neeqCompanyBusinessIncomeOnlines;
 	}

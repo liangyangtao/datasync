@@ -45,9 +45,11 @@ public class NeeqCompanyExecutiveOnlineServiceImpl implements NeeqCompanyExecuti
 		if (neeqCompanyExecutiveOnlines.size() > 0) {
 
 		} else {
-			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
-			example.setOrderByClause("id asc limit 1");
-			neeqCompanyExecutiveOnlines = neeqCompanyExecutiveOnlineMapper.selectByExample(example);
+			if (tdxUpIndexOnline.getUptime() != null) {
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
+				example.setOrderByClause("id asc limit 1");
+				neeqCompanyExecutiveOnlines = neeqCompanyExecutiveOnlineMapper.selectByExample(example);
+			}
 		}
 		return neeqCompanyExecutiveOnlines;
 

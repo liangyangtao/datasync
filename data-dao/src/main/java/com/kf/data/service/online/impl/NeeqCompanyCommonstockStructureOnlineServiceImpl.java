@@ -41,10 +41,12 @@ public class NeeqCompanyCommonstockStructureOnlineServiceImpl implements NeeqCom
 		if (neeqCompanyCommonstockStructureOnlines.size() > 0) {
 
 		} else {
-			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
-			example.setOrderByClause("id asc limit 1");
-			neeqCompanyCommonstockStructureOnlines = neeqCompanyCommonstockStructureOnlineMapper
-					.selectByExample(example);
+			if (tdxUpIndexOnline.getUptime() != null) {
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
+				example.setOrderByClause("id asc limit 1");
+				neeqCompanyCommonstockStructureOnlines = neeqCompanyCommonstockStructureOnlineMapper
+						.selectByExample(example);
+			}
 		}
 		return neeqCompanyCommonstockStructureOnlines;
 	}
