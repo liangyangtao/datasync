@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.kf.data.mybatis.entity.online.NeeqCompanyExecutiveOnline;
 import com.kf.data.mybatis.entity.online.NeeqCompanyExecutiveOnlineExample;
@@ -36,15 +35,17 @@ public class NeeqCompanyExecutiveOnlineServiceImpl implements NeeqCompanyExecuti
 		List<NeeqCompanyExecutiveOnline> neeqCompanyExecutiveOnlines = null;
 		NeeqCompanyExecutiveOnlineExample example = new NeeqCompanyExecutiveOnlineExample();
 		if (tdxUpIndexOnline.getUptime() == null) {
+			example.or().andStatusEqualTo((byte) 2);
 		} else {
-			example.or().andUpdatedAtEqualTo(tdxUpIndexOnline.getUptime()).andIdGreaterThan(tdxUpIndexOnline.getUpid());
+			example.or().andUpdatedAtEqualTo(tdxUpIndexOnline.getUptime()).andIdGreaterThan(tdxUpIndexOnline.getUpid())
+					.andStatusEqualTo((byte) 2);
 		}
 		example.setOrderByClause("id asc limit 100");
 		neeqCompanyExecutiveOnlines = neeqCompanyExecutiveOnlineMapper.selectByExample(example);
 		if (neeqCompanyExecutiveOnlines.size() > 0) {
 
 		} else {
-			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime());
+			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
 			example.setOrderByClause("id asc limit 1");
 			neeqCompanyExecutiveOnlines = neeqCompanyExecutiveOnlineMapper.selectByExample(example);
 		}

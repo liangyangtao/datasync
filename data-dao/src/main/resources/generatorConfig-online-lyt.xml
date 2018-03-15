@@ -27,19 +27,14 @@
 		<javaClientGenerator targetPackage="com.kf.data.mybatis.mapper.online"
 			targetProject="data-dao\src\main\java" type="XMLMAPPER">
 		</javaClientGenerator>
-
 		<table schema="crawler" tableName="neeq_company_executive"
 			domainObjectName="NeeqCompanyExecutiveOnline">
 			<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"
 				identity="true" type="post" />
-			<!-- <columnOverride column="status" jdbcType="TINYINT"
+			 <columnOverride column="status" jdbcType="TINYINT"
 				javaType="Byte">
-			</columnOverride>  -->
+			</columnOverride>  
 		</table>
-
-
-
-
 
 	</context>
 </generatorConfiguration>

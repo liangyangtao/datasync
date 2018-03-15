@@ -28,13 +28,12 @@
 			targetProject="data-dao\src\main\java" type="XMLMAPPER">
 		</javaClientGenerator>
 
-		<table schema="crawler" tableName="tdx_company_executive"
-			domainObjectName="TdxCompanyExecutive">
-			<!-- <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"
+		<table schema="crawler" tableName="tdx_events_issue_plan"
+			domainObjectName="TdxEventsIssuePlan">
+			<!-- <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" 
 				identity="true" type="post" /> -->
-			<!-- <columnOverride column="status" jdbcType="TINYINT"
-				javaType="Byte">
-			</columnOverride> -->
+			<!-- <columnOverride column="status" jdbcType="TINYINT" javaType="Byte"> 
+				</columnOverride> -->
 		</table>
 
 
