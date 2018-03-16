@@ -30,10 +30,10 @@ public class NeeqCompanyMainBusinessOnlineServiceImpl implements NeeqCompanyMain
 		List<NeeqCompanyMainBusinessOnline> neeqCompanyMainBusinessOnlines = null;
 		NeeqCompanyMainBusinessOnlineExample example = new NeeqCompanyMainBusinessOnlineExample();
 		if (tdxUpIndexOnline.getUptime() == null) {
-			example.or().andStatusEqualTo((byte) 2);
+			example.or().andStatusEqualTo((byte) 1);
 		} else {
 			example.or().andUpdatedAtEqualTo(tdxUpIndexOnline.getUptime()).andIdGreaterThan(tdxUpIndexOnline.getUpid())
-					.andStatusEqualTo((byte) 2);
+					.andStatusEqualTo((byte) 1);
 		}
 		example.setOrderByClause("id asc limit 100");
 		neeqCompanyMainBusinessOnlines = neeqCompanyMainBusinessOnlineMapper.selectByExampleWithBLOBs(example);
@@ -41,7 +41,7 @@ public class NeeqCompanyMainBusinessOnlineServiceImpl implements NeeqCompanyMain
 
 		} else {
 			if (tdxUpIndexOnline.getUptime() != null) {
-				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 1);
 				example.setOrderByClause("id asc limit 1");
 				neeqCompanyMainBusinessOnlines = neeqCompanyMainBusinessOnlineMapper.selectByExampleWithBLOBs(example);
 			}

@@ -3,6 +3,7 @@ package com.kf.data.task;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -21,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyBusinessIncomeService;
  * @date: 2018年3月15日 下午6:49:48
  * @version V1.0
  */
-@Component
-// @EnableScheduling
+//@Component
+//@EnableScheduling
 public class NeeqCompanyBusinessIncomeTask {
 
 	private static String tableName = "neeq_company_business_income";

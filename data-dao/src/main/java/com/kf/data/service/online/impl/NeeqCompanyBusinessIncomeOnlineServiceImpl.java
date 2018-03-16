@@ -14,7 +14,7 @@ import com.kf.data.service.online.NeeqCompanyBusinessIncomeOnlineService;
 /**
  * @Title: NeeqCompanyBusinessIncomeOnlineServiceImpl.java
  * @Package com.kf.data.service.online.impl
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description:营收来源
  * @author: liangyt
  * @date: 2018年3月15日 下午2:00:56
  * @version V1.0
@@ -31,10 +31,10 @@ public class NeeqCompanyBusinessIncomeOnlineServiceImpl implements NeeqCompanyBu
 		List<NeeqCompanyBusinessIncomeOnline> neeqCompanyBusinessIncomeOnlines = null;
 		NeeqCompanyBusinessIncomeOnlineExample example = new NeeqCompanyBusinessIncomeOnlineExample();
 		if (tdxUpIndexOnline.getUptime() == null) {
-			example.or().andStatusEqualTo((byte) 2);
+			example.or().andStatusEqualTo((byte) 1);
 		} else {
 			example.or().andUpdatedAtEqualTo(tdxUpIndexOnline.getUptime()).andIdGreaterThan(tdxUpIndexOnline.getUpid())
-					.andStatusEqualTo((byte) 2);
+					.andStatusEqualTo((byte) 1);
 		}
 		example.setOrderByClause("id asc limit 100");
 		neeqCompanyBusinessIncomeOnlines = neeqCompanyBusinessIncomeOnlineMapper.selectByExample(example);
@@ -42,7 +42,7 @@ public class NeeqCompanyBusinessIncomeOnlineServiceImpl implements NeeqCompanyBu
 
 		} else {
 			if (tdxUpIndexOnline.getUptime() != null) {
-				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 1);
 				example.setOrderByClause("id asc limit 1");
 				neeqCompanyBusinessIncomeOnlines = neeqCompanyBusinessIncomeOnlineMapper.selectByExample(example);
 			}

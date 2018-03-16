@@ -25,8 +25,8 @@ import com.kf.data.service.tdx.TdxCompanyShareholdersService;
  * @version V1.0
  */
 
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class NeeqCompanyShareholderTask {
 
 	private static String tableName = "neeq_company_shareholders";
@@ -71,12 +71,12 @@ public class NeeqCompanyShareholderTask {
 					tdxCompanyShareholders.setStockCode(neeqCompanyShareholdersOnline.getStockCode());
 					// tdxCompanyShareholders.setUpdatedAt(updatedAt);
 					tdxCompanyShareholders.setStockholderDescribe(neeqCompanyShareholdersOnline.getStockholderType());
-					List<NeeqCompanyShareholdersContributiveOnline> neeqCompanyShareholdersContributives = neeqCompanyShareholdersContributiveOnlineService
-							.readNeeqCompanyShareholdersContributiveOnlineById(
-									neeqCompanyShareholdersOnline.getStockholderId());
-					if (neeqCompanyShareholdersContributives.size() > 0) {
-						tdxCompanyShareholders.setMoney(neeqCompanyShareholdersContributives.get(0).getMoney());
-					}
+//					List<NeeqCompanyShareholdersContributiveOnline> neeqCompanyShareholdersContributives = neeqCompanyShareholdersContributiveOnlineService
+//							.readNeeqCompanyShareholdersContributiveOnlineById(
+//									neeqCompanyShareholdersOnline.getStockholderId());
+//					if (neeqCompanyShareholdersContributives.size() > 0) {
+//						tdxCompanyShareholders.setMoney(neeqCompanyShareholdersContributives.get(0).getMoney());
+//					}
 					tdxCompanyShareholdersService.saveTdxCompanyShareholders(tdxCompanyShareholders);
 
 				} catch (Exception e) {
