@@ -17,7 +17,7 @@ import com.kf.data.service.tdx.TdxCompanyBusinessIncomeService;
 /**
  * @Title: NeeqCompanyBusinessIncomeTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 营收来源
  * @author: liangyt
  * @date: 2018年3月15日 下午6:49:48
  * @version V1.0

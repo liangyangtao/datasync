@@ -28,8 +28,8 @@
 			targetProject="data-dao\src\main\java" type="XMLMAPPER">
 		</javaClientGenerator>
 
-		<table schema="crawler" tableName="tdx_company_main_business"
-			domainObjectName="TdxCompanyMainBusiness">
+		<table schema="crawler" tableName="tdx_company_judicial_auction"
+			domainObjectName="TdxCompanyJudicialAuction">
 			<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"
 				identity="true" type="post" />
 		</table>
