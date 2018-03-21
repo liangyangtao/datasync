@@ -3,6 +3,7 @@ package com.kf.data.service.online.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.kf.data.mybatis.entity.online.NeeqCompanyOnline;
 import com.kf.data.mybatis.entity.online.NeeqCompanyOnlineExample;
@@ -18,6 +19,7 @@ import com.kf.data.service.online.NeeqCompanyOnlineService;
  * @date: 2018年3月19日 上午10:02:35
  * @version V1.0
  */
+@Service
 public class NeeqCompanyOnlineServiceImpl implements NeeqCompanyOnlineService {
 
 	@Autowired
@@ -34,14 +36,14 @@ public class NeeqCompanyOnlineServiceImpl implements NeeqCompanyOnlineService {
 					.andStatusEqualTo((byte) 1);
 		}
 		example.setOrderByClause("id asc limit 100");
-		neeqCompanyOnlines = neeqCompanyOnlineMapper.selectByExample(example);
+		neeqCompanyOnlines = neeqCompanyOnlineMapper.selectByExampleWithBLOBs(example);
 		if (neeqCompanyOnlines.size() > 0) {
 
 		} else {
 			if (tdxUpIndexOnline.getUptime() != null) {
 				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 1);
 				example.setOrderByClause("id asc limit 1");
-				neeqCompanyOnlines = neeqCompanyOnlineMapper.selectByExample(example);
+				neeqCompanyOnlines = neeqCompanyOnlineMapper.selectByExampleWithBLOBs(example);
 			}
 		}
 		return neeqCompanyOnlines;

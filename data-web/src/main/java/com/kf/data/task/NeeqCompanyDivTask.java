@@ -66,6 +66,7 @@ public class NeeqCompanyDivTask {
 					tdxCompanyDiv.setReportDate(neeqCompanyDivOnline.getDtReport());
 					tdxCompanyDiv.setStockCode(neeqCompanyDivOnline.getStockCode());
 					tdxCompanyDiv.setTransferRatio(neeqCompanyDivOnline.getTransferRatio());
+					tdxCompanyDiv.setBonusRatio(neeqCompanyDivOnline.getBonusRatio());
 					// tdxCompanyDiv.setUpdatedAt(updatedAt);
 					tdxCompanyDivService.saveTdxCompanyDiv(tdxCompanyDiv);
 				} catch (Exception e) {
