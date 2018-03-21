@@ -13,6 +13,7 @@ import com.kf.data.mybatis.entity.online.TdxUpIndexOnline;
 import com.kf.data.mybatis.entity.tdx.TdxCompanyIndustry;
 import com.kf.data.mybatis.entity.tdx.TdxCompanyInfo;
 import com.kf.data.mybatis.entity.tdx.TdxCompanySaic;
+import com.kf.data.mybatis.entity.tdx.TdxCompanySaicWithBLOBs;
 import com.kf.data.service.online.NeeqBaseCompanyOnlineService;
 import com.kf.data.service.online.NeeqCompanyOnlineService;
 import com.kf.data.service.online.TdxUpIndexOnlineService;
@@ -28,8 +29,8 @@ import com.kf.data.service.tdx.TdxCompanySaicService;
  * @date: 2018年3月20日 下午6:10:51
  * @version V1.0
  */
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class NeeqCompanyTask {
 
 	private static String tableName = "neeq_company";
@@ -102,7 +103,7 @@ public class NeeqCompanyTask {
 				 * 工商信息
 				 */
 				try {
-					TdxCompanySaic tdxCompanySaic = new TdxCompanySaic();
+					TdxCompanySaicWithBLOBs tdxCompanySaic = new TdxCompanySaicWithBLOBs();
 					if (neeqBaseCompanyOnline != null) {
 						tdxCompanySaic.setApprovedDate(neeqBaseCompanyOnline.getApprovedDate());
 						tdxCompanySaic.setBusinessScope(neeqBaseCompanyOnline.getBusinessScope());
@@ -125,7 +126,7 @@ public class NeeqCompanyTask {
 					tdxCompanySaic.setLegalRepresentative(neeqCompanyOnline.getLegalRepresentative());
 					tdxCompanySaic.setMainBusiness(neeqCompanyOnline.getMainBusiness());
 					tdxCompanySaic.setSecretaries(neeqCompanyOnline.getSecretaries());
-					tdxCompanySaic.setTotalStockEquity(neeqCompanyOnline.getTotalStockEquity() + "");
+					tdxCompanySaic.setTotalStockEquity(neeqCompanyOnline.getTotalStockEquity());
 					// tdxCompanySaic.setUpTime(upTime);
 					tdxCompanySaicService.saveTdxCompanySaic(tdxCompanySaic);
 				} catch (Exception e) {

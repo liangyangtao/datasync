@@ -24,8 +24,8 @@ import com.kf.data.service.tdx.TdxCompanyTagService;
  * @date: 2018年3月20日 下午6:57:34
  * @version V1.0
  */
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class NeeqCompanyTagTask {
 
 	private static String tableName = "neeq_company_tag";

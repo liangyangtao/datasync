@@ -1,6 +1,6 @@
 package com.kf.data.service.tdx;
 
-import com.kf.data.mybatis.entity.tdx.TdxCompanySaic;
+import com.kf.data.mybatis.entity.tdx.TdxCompanySaicWithBLOBs;
 
 /**  
  * @Title:  TdxCompanySaicService.java   
@@ -11,5 +11,5 @@ import com.kf.data.mybatis.entity.tdx.TdxCompanySaic;
  * @version V1.0 
  */
 public interface TdxCompanySaicService {
-	public void saveTdxCompanySaic(TdxCompanySaic tdxCompanySaic);
+	public void saveTdxCompanySaic(TdxCompanySaicWithBLOBs tdxCompanySaic);
 }

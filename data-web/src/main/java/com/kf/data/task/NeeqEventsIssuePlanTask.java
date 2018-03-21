@@ -19,7 +19,7 @@ import com.kf.data.service.tdx.TdxEventsIssuePlanService;
 /**
  * @Title: NeeqCompanyExecutiveTask.java
  * @Package com.kf.data.task
- * @Description: 增发
+ * @Description: 股票增发预案
  * @author: liangyt
  * @date: 2018年3月14日 下午4:07:32
  * @version V1.0

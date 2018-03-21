@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.kf.data.mybatis.entity.tdx.TdxCompanySaic;
 import com.kf.data.mybatis.entity.tdx.TdxCompanySaicExample;
+import com.kf.data.mybatis.entity.tdx.TdxCompanySaicWithBLOBs;
 import com.kf.data.mybatis.mapper.tdx.TdxCompanySaicMapper;
 import com.kf.data.service.tdx.TdxCompanySaicService;
 
@@ -23,7 +24,7 @@ public class TdxCompanySaicServiceImpl implements TdxCompanySaicService {
 	TdxCompanySaicMapper tdxCompanySaicMapper;
 
 	@Override
-	public void saveTdxCompanySaic(TdxCompanySaic tdxCompanySaic) {
+	public void saveTdxCompanySaic(TdxCompanySaicWithBLOBs tdxCompanySaic) {
 		TdxCompanySaicExample example = new TdxCompanySaicExample();
 		example.or().andCompanyIdEqualTo(tdxCompanySaic.getCompanyId());
 		if (tdxCompanySaicMapper.countByExample(example) > 0) {

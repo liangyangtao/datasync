@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kf.data.mybatis.entity.online.NeeqCompanyEquityFreezeOnline;
 import com.kf.data.mybatis.entity.online.NeeqCompanyEquityFreezeOnlineExample;
+import com.kf.data.mybatis.entity.online.NeeqCompanyEquityFreezeOnlineWithBLOBs;
 import com.kf.data.mybatis.entity.online.TdxUpIndexOnline;
 import com.kf.data.mybatis.mapper.online.NeeqCompanyEquityFreezeOnlineMapper;
 import com.kf.data.service.online.NeeqCompanyEquityFreezeOnlineService;
@@ -26,24 +27,25 @@ public class NeeqCompanyEquityFreezeOnlineServiceImpl implements NeeqCompanyEqui
 	NeeqCompanyEquityFreezeOnlineMapper neeqCompanyEquityFreezeOnlineMapper;
 
 	@Override
-	public List<NeeqCompanyEquityFreezeOnline> readNeeqCompanyEquityFreezeOnlines(TdxUpIndexOnline tdxUpIndexOnline) {
-		List<NeeqCompanyEquityFreezeOnline> neeqCompanyEquityFreezeOnlines = null;
+	public List<NeeqCompanyEquityFreezeOnlineWithBLOBs> readNeeqCompanyEquityFreezeOnlines(
+			TdxUpIndexOnline tdxUpIndexOnline) {
+		List<NeeqCompanyEquityFreezeOnlineWithBLOBs> neeqCompanyEquityFreezeOnlines = null;
 		NeeqCompanyEquityFreezeOnlineExample example = new NeeqCompanyEquityFreezeOnlineExample();
 		if (tdxUpIndexOnline.getUptime() == null) {
-			example.or().andStatusEqualTo((byte) 2);
+			example.or().andStatusEqualTo((byte) 1);
 		} else {
 			example.or().andUpdatedAtEqualTo(tdxUpIndexOnline.getUptime()).andIdGreaterThan(tdxUpIndexOnline.getUpid())
-					.andStatusEqualTo((byte) 2);
+					.andStatusEqualTo((byte) 1);
 		}
 		example.setOrderByClause("id asc limit 100");
-		neeqCompanyEquityFreezeOnlines = neeqCompanyEquityFreezeOnlineMapper.selectByExample(example);
+		neeqCompanyEquityFreezeOnlines = neeqCompanyEquityFreezeOnlineMapper.selectByExampleWithBLOBs(example);
 		if (neeqCompanyEquityFreezeOnlines.size() > 0) {
 
 		} else {
 			if (tdxUpIndexOnline.getUptime() != null) {
-				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 1);
 				example.setOrderByClause("id asc limit 1");
-				neeqCompanyEquityFreezeOnlines = neeqCompanyEquityFreezeOnlineMapper.selectByExample(example);
+				neeqCompanyEquityFreezeOnlines = neeqCompanyEquityFreezeOnlineMapper.selectByExampleWithBLOBs(example);
 			}
 		}
 		return neeqCompanyEquityFreezeOnlines;

@@ -3,6 +3,7 @@ package com.kf.data.service.online;
 import java.util.List;
 
 import com.kf.data.mybatis.entity.online.NeeqCompanyEquityFreezeOnline;
+import com.kf.data.mybatis.entity.online.NeeqCompanyEquityFreezeOnlineWithBLOBs;
 import com.kf.data.mybatis.entity.online.TdxUpIndexOnline;
 
 /**  
@@ -15,5 +16,5 @@ import com.kf.data.mybatis.entity.online.TdxUpIndexOnline;
  */
 public interface NeeqCompanyEquityFreezeOnlineService {
 
-	public List<NeeqCompanyEquityFreezeOnline> readNeeqCompanyEquityFreezeOnlines(TdxUpIndexOnline tdxUpIndexOnline);
+	public List<NeeqCompanyEquityFreezeOnlineWithBLOBs> readNeeqCompanyEquityFreezeOnlines(TdxUpIndexOnline tdxUpIndexOnline);
 }
