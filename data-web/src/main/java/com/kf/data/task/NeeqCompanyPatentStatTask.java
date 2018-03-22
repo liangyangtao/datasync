@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyPatentStatService;
  * @date: 2018年3月21日 下午3:39:40
  * @version V1.0
  */
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class NeeqCompanyPatentStatTask {
 
 	private static String tableName = "neeq_company_patent_stat";

@@ -26,7 +26,7 @@ import com.kf.data.service.tdx.TdxCompanyAdmPenaltyService;
 //@EnableScheduling
 public class NeeqCompanyAdmPenaltyTask {
 
-	private static String tableName = "tdx_company_adm_penalty";
+	private static String tableName = "neeq_company_adm_penalty";
 
 	@Autowired
 	TdxUpIndexOnlineService tdxUpIndexOnlineService;
