@@ -10,15 +10,18 @@ import org.springframework.stereotype.Component;
 import com.kf.data.mybatis.entity.online.NeeqBaseCompanyOnline;
 import com.kf.data.mybatis.entity.online.NeeqCompanyOnline;
 import com.kf.data.mybatis.entity.online.TdxUpIndexOnline;
+import com.kf.data.mybatis.entity.tdx.TdxCompanyAccountingFirm;
 import com.kf.data.mybatis.entity.tdx.TdxCompanyIndustry;
 import com.kf.data.mybatis.entity.tdx.TdxCompanyInfo;
-import com.kf.data.mybatis.entity.tdx.TdxCompanySaic;
+import com.kf.data.mybatis.entity.tdx.TdxCompanyLawFirm;
 import com.kf.data.mybatis.entity.tdx.TdxCompanySaicWithBLOBs;
 import com.kf.data.service.online.NeeqBaseCompanyOnlineService;
 import com.kf.data.service.online.NeeqCompanyOnlineService;
 import com.kf.data.service.online.TdxUpIndexOnlineService;
+import com.kf.data.service.tdx.TdxCompanyAccountingFirmService;
 import com.kf.data.service.tdx.TdxCompanyIndustryService;
 import com.kf.data.service.tdx.TdxCompanyInfoService;
+import com.kf.data.service.tdx.TdxCompanyLawFirmService;
 import com.kf.data.service.tdx.TdxCompanySaicService;
 
 /**
@@ -52,6 +55,12 @@ public class NeeqCompanyTask {
 
 	@Autowired
 	TdxCompanyIndustryService tdxCompanyIndustryService;
+
+	@Autowired
+	TdxCompanyAccountingFirmService tdxCompanyAccountingFirmService;
+
+	@Autowired
+	TdxCompanyLawFirmService tdxCompanyLawFirmService;
 
 	@Scheduled(fixedDelay = 1000)
 	public void executiveSyncTask() {
@@ -143,6 +152,36 @@ public class NeeqCompanyTask {
 					tdxCompanyIndustryService.saveTdxCompanyIndustry(tdxCompanyIndustry);
 				} catch (Exception e) {
 					e.printStackTrace();
+				}
+
+				/***
+				 * 会计
+				 */
+				try {
+					TdxCompanyAccountingFirm tdxCompanyAccountingFirm = new TdxCompanyAccountingFirm();
+					tdxCompanyAccountingFirm.setAccountingFirmId(neeqCompanyOnline.getAccountingFirmId());
+					tdxCompanyAccountingFirm.setAccountingFirmName(neeqCompanyOnline.getAccountingFirmShortname());
+					tdxCompanyAccountingFirm.setCompanyId(neeqCompanyOnline.getCompanyId());
+					tdxCompanyAccountingFirm.setCompanyName(neeqCompanyOnline.getName());
+					// tdxCompanyAccountingFirm.setUpdatedAt(updatedAt);
+					tdxCompanyAccountingFirmService.saveTdxCompanyAccountingFirm(tdxCompanyAccountingFirm);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				/***
+				 * 律师
+				 */
+
+				try {
+					TdxCompanyLawFirm tdxCompanyLawFirm = new TdxCompanyLawFirm();
+					tdxCompanyLawFirm.setCompanyId(neeqCompanyOnline.getCompanyId());
+					tdxCompanyLawFirm.setCompanyName(neeqCompanyOnline.getName());
+					tdxCompanyLawFirm.setLawFirmId(neeqCompanyOnline.getLawFirmId());
+					tdxCompanyLawFirm.setLawFirmName(neeqCompanyOnline.getLawFirmShortname());
+					tdxCompanyLawFirmService.saveTdxCompanyLawFirm(tdxCompanyLawFirm);
+				} catch (Exception e) {
+					// TODO: handle exception
 				}
 
 			}
