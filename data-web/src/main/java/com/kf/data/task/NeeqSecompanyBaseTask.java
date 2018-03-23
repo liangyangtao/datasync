@@ -25,8 +25,8 @@ import com.kf.data.service.tdx.TdxSecompanyBaseService;
  * @date: 2018年3月23日 上午11:27:22
  * @version V1.0
  */
-@Component
-@EnableScheduling
+//@Component
+//@EnableScheduling
 public class NeeqSecompanyBaseTask {
 
 	private static String tableName = "neeq_secompany_base";
