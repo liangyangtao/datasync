@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyResearchStatService;
 /**
  * @Title: NeeqCompanyResearchStatTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 研发投入
  * @author: liangyt
  * @date: 2018年3月21日 下午3:12:35
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyResearchStatTask {
 
 	private static String tableName = "neeq_company_research_stat";

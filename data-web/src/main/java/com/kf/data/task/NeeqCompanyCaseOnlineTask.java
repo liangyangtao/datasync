@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyCaseService;
  * @date: 2018年3月16日 下午4:46:45
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyCaseOnlineTask {
 
 	private static String tableName = "neeq_company_case";

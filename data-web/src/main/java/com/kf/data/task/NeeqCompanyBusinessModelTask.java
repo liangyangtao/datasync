@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyBusinessModelService;
  * @date: 2018年3月15日 下午7:09:14
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyBusinessModelTask {
 
 	private static String tableName = "neeq_company_business_model";

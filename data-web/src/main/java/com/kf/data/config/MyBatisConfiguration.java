@@ -19,6 +19,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.kf.data.elasticsearch.tools.ServerConfig;
+
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({ "com.kf.data" })
@@ -135,5 +137,35 @@ public class MyBatisConfiguration {
 		ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(128);
 		return scheduledThreadPoolExecutor;
 	}
+	
+	@Bean
+	public ServerConfig serverConfig() {
+
+		ServerConfig serverConfig = new ServerConfig();	
+		serverConfig.setEsUrl(environment.getRequiredProperty("es.url"));
+		serverConfig.setPort(Integer.parseInt(environment.getRequiredProperty("es.port")));
+		serverConfig.setClusterName(environment.getRequiredProperty("es.clusterName"));
+		/****
+		 * 新闻
+		 */
+		serverConfig.setNewsindexName(environment.getRequiredProperty("es.news.indexName"));
+		serverConfig.setNewsdataType(environment.getRequiredProperty("es.news.dataType"));
+		serverConfig.setNewsFilmindexName(environment.getRequiredProperty("es.newsFilm.indexName"));
+		serverConfig.setNewsFilmdataType(environment.getRequiredProperty("es.newsFilm.dataType"));
+		// 法律法规
+		serverConfig.setLaws_indexName(environment.getRequiredProperty("es.laws.indexName"));
+		serverConfig.setLaws_dataType(environment.getRequiredProperty("es.laws.dataType"));
+
+		// 研报
+		serverConfig.setReportIndexName(environment.getRequiredProperty("es.report.indexName"));
+		serverConfig.setReportDataType(environment.getRequiredProperty("es.report.dataType"));
+		// 公司公告
+		serverConfig.setNoticeIndexName(environment.getRequiredProperty("es.notice.indexName"));
+		serverConfig.setNoticeDataType(environment.getRequiredProperty("es.notice.dataType"));
+
+		return serverConfig;
+
+	}
+	
 
 }

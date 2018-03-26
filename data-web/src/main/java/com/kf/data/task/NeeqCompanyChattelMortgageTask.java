@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyChattelMortgageService;
  * @date: 2018年3月16日 下午5:45:22
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyChattelMortgageTask {
 
 	private static String tableName = "neeq_company_chattel_mortgage";

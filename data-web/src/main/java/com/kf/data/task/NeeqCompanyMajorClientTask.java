@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyMajorClientService;
  * @date: 2018年3月15日 下午6:56:04
  * @version V1.0
  */
-// @Component
-// @EnableScheduling
+ @Component
+ @EnableScheduling
 public class NeeqCompanyMajorClientTask {
 
 	private static String tableName = "neeq_company_major_client";

@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyImExPortService;
 /**
  * @Title: NeeqCompanyImExPortTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 进出口信用
  * @author: liangyt
  * @date: 2018年3月22日 下午2:47:25
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyImExPortTask {
 
 	private static String tableName = "neeq_company_im_ex_port";

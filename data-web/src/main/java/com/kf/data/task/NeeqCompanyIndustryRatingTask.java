@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyIndustryRatingService;
  * @date: 2018年3月15日 下午6:49:48
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyIndustryRatingTask {
 
 	private static String tableName = "neeq_company_industry_rating";

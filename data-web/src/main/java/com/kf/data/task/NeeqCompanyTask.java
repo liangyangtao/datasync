@@ -32,8 +32,8 @@ import com.kf.data.service.tdx.TdxCompanySaicService;
  * @date: 2018年3月20日 下午6:10:51
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyTask {
 
 	private static String tableName = "neeq_company";

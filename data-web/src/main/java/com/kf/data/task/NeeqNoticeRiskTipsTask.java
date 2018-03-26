@@ -24,8 +24,8 @@ import com.kf.data.service.tdx.TdxNoticeRiskTipsService;
  * @date: 2018年3月16日 下午1:46:27
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqNoticeRiskTipsTask {
 
 	private static String tableName = "neeq_notice_risk_tips";

@@ -18,13 +18,13 @@ import com.kf.data.service.tdx.TdxEventsTenderBidService;
 /**
  * @Title: NeeqEventsTenderBidTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 招投标
  * @author: liangyt
  * @date: 2018年3月22日 下午2:20:07
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqEventsTenderBidTask {
 
 	private static String tableName = "neeq_events_tender_bid";

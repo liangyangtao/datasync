@@ -23,8 +23,8 @@ import com.kf.data.service.tdx.TdxEventsIssueEffectService;
  * @version V1.0
  */
 
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqEventsIssueEffectTask {
 
 	private static String tableName = "neeq_events_issue_effect";

@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyDomainRecordService;
 /**
  * @Title: NeeqCompanyDomainRecordTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 域名
  * @author: liangyt
  * @date: 2018年3月21日 下午5:02:55
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyDomainRecordTask {
 
 	private static String tableName = "neeq_company_domain_record";

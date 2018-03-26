@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyTaxArrearsService;
 /**
  * @Title: NeeqCompanyTaxArrearsTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 欠税公告
  * @author: liangyt
  * @date: 2018年3月22日 上午11:32:26
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyTaxArrearsTask {
 
 	private static String tableName = "neeq_company_tax_arrears";

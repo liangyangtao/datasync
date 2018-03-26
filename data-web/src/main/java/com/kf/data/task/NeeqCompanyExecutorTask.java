@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyExecutorService;
 /**
  * @Title: NeeqCompanyExecutorTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description:被执行人
  * @author: liangyt
  * @date: 2018年3月22日 上午10:59:59
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyExecutorTask {
 
 	private static String tableName = "neeq_company_executor";

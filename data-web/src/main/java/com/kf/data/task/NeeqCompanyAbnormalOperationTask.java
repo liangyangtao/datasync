@@ -23,8 +23,8 @@ import com.kf.data.service.tdx.TdxCompanyAbnormalOperationService;
  * @date: 2018年3月16日 下午1:46:27
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyAbnormalOperationTask {
 
 	private static String tableName = "neeq_company_abnormal_operation";

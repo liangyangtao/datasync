@@ -18,13 +18,13 @@ import com.kf.data.service.tdx.TdxCompanyEquityFreezeService;
 /**
  * @Title: NeeqCompanyEquityFreezeTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 股权冻结
  * @author: liangyt
  * @date: 2018年3月21日 下午2:09:39
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyEquityFreezeTask {
 
 	private static String tableName = "neeq_company_equity_freeze";

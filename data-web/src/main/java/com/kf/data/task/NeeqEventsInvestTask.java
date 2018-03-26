@@ -27,8 +27,8 @@ import com.kf.data.tools.Md5Tools;
  * @date: 2018年3月21日 上午11:07:01
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqEventsInvestTask {
 	private static String tableName = "neeq_events_invest";
 	@Autowired

@@ -25,8 +25,8 @@ import com.kf.data.service.tdx.TdxEventsIssuePlanService;
  * @version V1.0
  */
 
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqEventsIssuePlanTask {
 
 	private static String tableName = "neeq_events_issue_plan";

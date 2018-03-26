@@ -17,14 +17,14 @@ import com.kf.data.service.tdx.TdxNoticeService;
 /**
  * @Title: NeeqNoticeTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 公告
  * @author: liangyt
  * @date: 2018年3月23日 下午2:45:24
  * @version V1.0
  */
 
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqNoticeTask {
 
 	private static String tableName = "neeq_notice";
@@ -59,7 +59,7 @@ public class NeeqNoticeTask {
 					tdxNotice.setNoticeTypeName(neeqNoticeOnline.getNoticeTypeName());
 					tdxNotice.setPublishDate(neeqNoticeOnline.getPublishDate());
 					tdxNotice.setTitle(neeqNoticeOnline.getTitle());
-//					tdxNotice.setUpdatedAt(updatedAt);
+					// tdxNotice.setUpdatedAt(updatedAt);
 					tdxNoticeService.saveTdxNotice(tdxNotice);
 
 				} catch (Exception e) {

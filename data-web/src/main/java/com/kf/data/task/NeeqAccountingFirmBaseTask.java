@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxAccountingFirmBaseService;
 /**
  * @Title: NeeqAccountingFirmBaseTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 会计师事务所
  * @author: liangyt
  * @date: 2018年3月23日 上午11:07:14
  * @version V1.0
  */
-// @Component
-// @EnableScheduling
+ @Component
+ @EnableScheduling
 public class NeeqAccountingFirmBaseTask {
 
 	private static String tableName = "neeq_accounting_firm_base";

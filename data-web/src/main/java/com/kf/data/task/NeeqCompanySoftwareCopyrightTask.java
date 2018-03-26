@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanySoftwareCopyrightService;
 /**
  * @Title: NeeqCompanySoftwareCopyright.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 软件著作权
  * @author: liangyt
  * @date: 2018年3月21日 下午4:24:15
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanySoftwareCopyrightTask {
 
 	private static String tableName = "neeq_company_software_copyright";

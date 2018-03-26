@@ -17,14 +17,14 @@ import com.kf.data.service.tdx.TdxCompanyBondFinancingService;
 /**
  * @Title: NeeqCompanyBondFinancingTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 债券信息
  * @author: liangyt
  * @date: 2018年3月22日 下午3:12:34
  * @version V1.0
  */
 
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyBondFinancingTask {
 
 	private static String tableName = "neeq_company_bond_financing";

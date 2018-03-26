@@ -23,8 +23,8 @@ import com.kf.data.service.tdx.TdxCompanyCorestaffService;
  * @version V1.0
  */
 
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyCorestaffTask {
 
 	private static String tableName = "neeq_company_corestaff";

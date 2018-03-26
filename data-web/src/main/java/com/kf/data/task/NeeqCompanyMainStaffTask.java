@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyMainStaffService;
  * @date: 2018年3月22日 下午2:34:57
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyMainStaffTask {
 
 	private static String tableName = "neeq_company_main_staff";

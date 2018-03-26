@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyTaxRatingService;
 /**
  * @Title: NeeqCompanyTaxRatingTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 税务评级
  * @author: liangyt
  * @date: 2018年3月22日 下午3:02:57
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyTaxRatingTask {
 
 	private static String tableName = "neeq_company_tax_rating";

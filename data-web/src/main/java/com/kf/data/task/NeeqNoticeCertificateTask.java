@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxNoticeCertificateService;
 /**
  * @Title: NeeqNoticeCertificateTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 企业证书
  * @author: liangyt
  * @date: 2018年3月21日 下午5:17:21
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqNoticeCertificateTask {
 	private static String tableName = "neeq_notice_certificate";
 

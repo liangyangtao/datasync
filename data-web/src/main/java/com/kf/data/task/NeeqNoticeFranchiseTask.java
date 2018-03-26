@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxNoticeFranchiseService;
 /**
  * @Title: NeeqNoticeFranchiseService.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description:特许经营权
  * @author: liangyt
  * @date: 2018年3月21日 下午5:35:40
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqNoticeFranchiseTask {
 
 	private static String tableName = "neeq_notice_franchise";

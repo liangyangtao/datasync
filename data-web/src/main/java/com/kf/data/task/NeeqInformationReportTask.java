@@ -18,14 +18,14 @@ import com.kf.data.service.tdx.TdxInformationReportService;
 /**
  * @Title: NeeqInformationReportTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 研报
  * @author: liangyt
  * @date: 2018年3月23日 下午2:17:09
  * @version V1.0
  */
 
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqInformationReportTask {
 
 	private static String tableName = "neeq_information_report";

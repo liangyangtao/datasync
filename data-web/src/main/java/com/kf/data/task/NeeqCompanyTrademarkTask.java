@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyTrademarkService;
 /**
  * @Title: NeeqCompanyTrademarkTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 商标信息
  * @author: liangyt
  * @date: 2018年3月21日 下午4:05:27
  * @version V1.0
  */
-// @Component
-// @EnableScheduling
+ @Component
+ @EnableScheduling
 public class NeeqCompanyTrademarkTask {
 
 	private static String tableName = "neeq_company_trademark";

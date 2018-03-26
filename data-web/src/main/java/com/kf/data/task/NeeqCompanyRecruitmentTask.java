@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyRecruitmentService;
 /**
  * @Title: NeeqCompanyRecruitmentTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 招聘信息
  * @author: liangyt
  * @date: 2018年3月22日 下午1:59:13
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyRecruitmentTask {
 
 	private static String tableName = "neeq_company_recruitment";

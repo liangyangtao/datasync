@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyMainBusinessService;
  * @date: 2018年3月15日 下午6:40:30
  * @version V1.0
  */
-// @Component
-// @EnableScheduling
+ @Component
+ @EnableScheduling
 public class NeeqCompanyMainBusinessTask {
 
 	private static String tableName = "neeq_company_main_business";

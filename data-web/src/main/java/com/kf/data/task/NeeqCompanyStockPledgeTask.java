@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyStockPledgeService;
  * @date: 2018年3月21日 下午1:46:15
  * @version V1.0
  */
-// @Component
-// @EnableScheduling
+ @Component
+ @EnableScheduling
 public class NeeqCompanyStockPledgeTask {
 
 	private static String tableName = "neeq_company_stock_pledge";

@@ -25,8 +25,8 @@ import com.kf.data.service.tdx.TdxCompanyShareholdersService;
  * @version V1.0
  */
 
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyShareholderTask {
 
 	private static String tableName = "neeq_company_shareholders";

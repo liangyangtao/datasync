@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyJudicialAuctionService;
  * @date: 2018年3月16日 下午6:08:00
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyJudicialAuctionTask {
 
 	private static String tableName = "neeq_company_judicial_auction";

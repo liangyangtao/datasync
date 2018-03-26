@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyCheckService;
  * @date: 2018年3月22日 下午3:27:49
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyCheckTask {
 
 	private static String tableName = "neeq_company_check";

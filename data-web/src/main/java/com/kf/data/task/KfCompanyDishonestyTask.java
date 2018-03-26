@@ -23,8 +23,8 @@ import com.kf.data.service.tdx.TdxCompanyDishonestyService;
  * @date: 2018年3月16日 下午1:46:27
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class KfCompanyDishonestyTask {
 
 	private static String tableName = "kf_company_dishonesty";

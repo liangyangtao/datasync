@@ -27,8 +27,8 @@ import com.kf.data.service.tdx.TdxCompanyExecutiveService;
  * @version V1.0
  */
 
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyExecutiveTask {
 
 	private static String tableName = "neeq_company_executive";

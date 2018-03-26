@@ -23,8 +23,8 @@ import com.kf.data.service.tdx.TdxCompanyCommonstockStructureService;
  * @version V1.0
  */
 
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyCommonstockStructureTask {
 
 	private static String tableName = "neeq_company_commonstock_structure";

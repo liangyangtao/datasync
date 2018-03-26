@@ -20,13 +20,13 @@ import com.kf.data.service.tdx.TdxSecompanyBaseService;
 /**
  * @Title: NeeqSecompanyBaseTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 主办券商
  * @author: liangyt
  * @date: 2018年3月23日 上午11:27:22
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqSecompanyBaseTask {
 
 	private static String tableName = "neeq_secompany_base";

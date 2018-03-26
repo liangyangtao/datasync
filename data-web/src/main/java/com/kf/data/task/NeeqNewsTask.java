@@ -7,10 +7,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.kf.data.elasticsearch.entity.EsNews;
 import com.kf.data.mybatis.entity.online.NeeqNewsOnline;
 import com.kf.data.mybatis.entity.online.NeeqNewsOnlineWithBLOBs;
 import com.kf.data.mybatis.entity.online.TdxUpIndexOnline;
 import com.kf.data.mybatis.entity.tdx.TdxNews;
+import com.kf.data.service.es.ElasticsearchNewsService;
 import com.kf.data.service.online.NeeqNewsOnlineService;
 import com.kf.data.service.online.TdxUpIndexOnlineService;
 import com.kf.data.service.tdx.TdxNewsService;
@@ -18,13 +20,13 @@ import com.kf.data.service.tdx.TdxNewsService;
 /**
  * @Title: NeeqNewsTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 新闻
  * @author: liangyt
  * @date: 2018年3月23日 下午3:01:37
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqNewsTask {
 
 	private static String tableName = "neeq_news";
@@ -37,6 +39,9 @@ public class NeeqNewsTask {
 
 	@Autowired
 	TdxNewsService tdxNewsService;
+
+	@Autowired
+	ElasticsearchNewsService elasticsearchNewsService;
 
 	@Scheduled(fixedDelay = 1000)
 	public void executiveSyncTask() {
@@ -57,7 +62,15 @@ public class NeeqNewsTask {
 					TdxNews tdxNews = new TdxNews();
 					tdxNews.setAuthor(neeqNewsOnline.getAuthor());
 					tdxNews.setCategoryName(neeqNewsOnline.getCategoryName());
-					tdxNews.setContent(neeqNewsOnline.getContent());
+					String newsId = neeqNewsOnline.getNewsId();
+					String content = null;
+					try {
+						EsNews esNews = elasticsearchNewsService.readEsNewsByNewsId(newsId);
+						content = esNews.getContent();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					tdxNews.setContent(content);
 					tdxNews.setLabel(neeqNewsOnline.getLabel());
 					tdxNews.setReleaseDate(neeqNewsOnline.getReleaseDate());
 					tdxNews.setSource(neeqNewsOnline.getSource());

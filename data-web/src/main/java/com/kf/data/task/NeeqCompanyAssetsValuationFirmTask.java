@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyAssetsValuationFirmService;
 /**
  * @Title: NeeqCompanyAssetsValuationFirmTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 资产评估
  * @author: liangyt
  * @date: 2018年3月22日 下午6:00:05
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyAssetsValuationFirmTask {
 
 	private static String tableName = "neeq_company_assets_valuation_firm";

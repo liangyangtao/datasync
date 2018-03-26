@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxCompanyAnnouncementService;
 /**
  * @Title: NeeqCompanyAnnouncementTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 开庭公告
  * @author: liangyt
  * @date: 2018年3月22日 上午11:12:24
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyAnnouncementTask {
 
 	private static String tableName = "neeq_company_announcement";

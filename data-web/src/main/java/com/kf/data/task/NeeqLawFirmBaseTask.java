@@ -17,13 +17,13 @@ import com.kf.data.service.tdx.TdxLawFirmBaseService;
 /**
  * @Title: NeeqLawFirmBaseTask.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 律师事务所
  * @author: liangyt
  * @date: 2018年3月23日 上午10:53:54
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqLawFirmBaseTask {
 
 	private static String tableName = "neeq_law_firm_base";

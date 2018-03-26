@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyChangeService;
  * @date: 2018年3月15日 下午6:49:48
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyChangeTask {
 
 	private static String tableName = "neeq_company_change";

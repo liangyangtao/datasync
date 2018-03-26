@@ -19,11 +19,11 @@ import com.kf.data.service.tdx.TdxFinanceIndicator2014Service;
 /**
  * @Title: NeeqFinanceIndicator2014Task.java
  * @Package com.kf.data.task
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 财务2014
  * @author: liangyt
  * @date: 2018年3月23日 下午5:06:10
  * @version V1.0
- */
+ */	
 @Component
 @EnableScheduling
 public class NeeqFinanceIndicator2014Task {

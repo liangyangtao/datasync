@@ -22,8 +22,8 @@ import com.kf.data.service.tdx.TdxCompanyAdmPenaltyService;
  * @date: 2018年3月16日 下午5:27:08
  * @version V1.0
  */
-//@Component
-//@EnableScheduling
+@Component
+@EnableScheduling
 public class NeeqCompanyAdmPenaltyTask {
 
 	private static String tableName = "neeq_company_adm_penalty";
