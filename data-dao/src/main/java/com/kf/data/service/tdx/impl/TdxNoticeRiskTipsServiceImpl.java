@@ -26,7 +26,7 @@ public class TdxNoticeRiskTipsServiceImpl implements TdxNoticeRiskTipsService {
 	public void saveTdxNoticeRiskTips(TdxNoticeRiskTips tdxNoticeRiskTips) {
 		TdxNoticeRiskTipsExample example = new TdxNoticeRiskTipsExample();
 		example.or().andCompanyIdEqualTo(tdxNoticeRiskTips.getCompanyId())
-				.andReportDataEqualTo(tdxNoticeRiskTips.getReportData())
+				.andReportDateEqualTo(tdxNoticeRiskTips.getReportDate())
 				.andRiskNameEqualTo(tdxNoticeRiskTips.getRiskName());
 		if (tdxNoticeRiskTipsMapper.countByExample(example) > 0) {
 			tdxNoticeRiskTipsMapper.updateByExampleSelective(tdxNoticeRiskTips, example);

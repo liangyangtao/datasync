@@ -61,6 +61,7 @@ public class NeeqCompanyCopyrightTask {
 					tdxCompanyCopyright.setRegistrationNumber(neeqCompanyCopyrightOnline.getRegistrationNumber());
 					tdxCompanyCopyright.setType(neeqCompanyCopyrightOnline.getType());
 					tdxCompanyCopyright.setVersion(neeqCompanyCopyrightOnline.getVersion());
+					tdxCompanyCopyright.setRegisterDate(neeqCompanyCopyrightOnline.getRegisterDate());
 					tdxCompanyCopyrightService.saveTdxCompanyCopyright(tdxCompanyCopyright);
 				} catch (Exception e) {
 					e.printStackTrace();

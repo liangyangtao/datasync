@@ -55,7 +55,7 @@ public class NeeqNoticeTask {
 					tdxNotice.setCode(neeqNoticeOnline.getCode());
 					tdxNotice.setCompanyid(neeqNoticeOnline.getCompanyid());
 					tdxNotice.setCompanyName(neeqNoticeOnline.getCompanyName());
-					tdxNotice.setContent(neeqNoticeOnline.getContent());
+					tdxNotice.setFilePath(neeqNoticeOnline.getFilePath());
 					tdxNotice.setNoticeTypeName(neeqNoticeOnline.getNoticeTypeName());
 					tdxNotice.setPublishDate(neeqNoticeOnline.getPublishDate());
 					tdxNotice.setTitle(neeqNoticeOnline.getTitle());

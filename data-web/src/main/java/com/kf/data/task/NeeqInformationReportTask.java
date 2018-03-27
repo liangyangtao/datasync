@@ -57,7 +57,7 @@ public class NeeqInformationReportTask {
 
 				try {
 					TdxInformationReport tdxInformationReport = new TdxInformationReport();
-					tdxInformationReport.setContent(neeqInformationReportOnline.getContent());
+					tdxInformationReport.setFileUrl(neeqInformationReportOnline.getFileUrl());
 					tdxInformationReport.setPublishDate(neeqInformationReportOnline.getPublishDate());
 					tdxInformationReport.setReporter(neeqInformationReportOnline.getReporter());
 					tdxInformationReport.setReportTypeName(neeqInformationReportOnline.getReportTypeName());

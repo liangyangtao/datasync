@@ -60,7 +60,7 @@ public class NeeqNoticeRiskTipsTask {
 					tdxNoticeRiskTips.setCompanyId(neeqNoticeRiskTipsOnline.getCompanyId());
 					tdxNoticeRiskTips.setCompanyName(neeqNoticeRiskTipsOnline.getCompanyName());
 
-					tdxNoticeRiskTips.setReportData(neeqNoticeRiskTipsOnline.getDtTips());
+					tdxNoticeRiskTips.setReportDate(neeqNoticeRiskTipsOnline.getDtTips());
 					tdxNoticeRiskTips.setRiskDetail(neeqNoticeRiskTipsOnline.getRiskDetail());
 					tdxNoticeRiskTips.setRiskName(neeqNoticeRiskTipsOnline.getRiskName());
 					tdxNoticeRiskTips.setStockCode(neeqNoticeRiskTipsOnline.getStockCode());

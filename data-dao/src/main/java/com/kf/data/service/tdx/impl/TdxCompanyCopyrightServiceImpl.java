@@ -25,7 +25,8 @@ public class TdxCompanyCopyrightServiceImpl implements TdxCompanyCopyrightServic
 	@Override
 	public void saveTdxCompanyCopyright(TdxCompanyCopyright tdxCompanyCopyright) {
 		TdxCompanyCopyrightExample example = new TdxCompanyCopyrightExample();
-		example.or().andCompanyIdEqualTo(tdxCompanyCopyright.getCompanyId())
+		example.or().andCompanyNameEqualTo(tdxCompanyCopyright.getCompanyName())
+				.andRegisterDateEqualTo(tdxCompanyCopyright.getRegisterDate())
 				.andRegistrationNumberEqualTo(tdxCompanyCopyright.getRegistrationNumber());
 		if (tdxCompanyCopyrightMapper.countByExample(example) > 0) {
 			tdxCompanyCopyrightMapper.updateByExampleSelective(tdxCompanyCopyright, example);
