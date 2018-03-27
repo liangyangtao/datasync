@@ -25,7 +25,10 @@ public class TdxCompanyCommonstockStructureServiceImpl implements TdxCompanyComm
 	@Override
 	public void saveTdxCompanyCommonstockStructure(TdxCompanyCommonstockStructure tdxCompanyCommonstockStructure) {
 		TdxCompanyCommonstockStructureExample example = new TdxCompanyCommonstockStructureExample();
-		example.or().andIdEqualTo(tdxCompanyCommonstockStructure.getId());
+		example.or().andStockCodeEqualTo(tdxCompanyCommonstockStructure.getStockCode())
+				.andReportDateEqualTo(tdxCompanyCommonstockStructure.getReportDate())
+				.andStockTypeEqualTo(tdxCompanyCommonstockStructure.getStockType())
+				.andStockTypeInfoEqualTo(tdxCompanyCommonstockStructure.getStockTypeInfo());
 		if (tdxCompanyCommonstockStructureMapper.countByExample(example) > 0) {
 			tdxCompanyCommonstockStructureMapper.updateByExampleSelective(tdxCompanyCommonstockStructure, example);
 		} else {

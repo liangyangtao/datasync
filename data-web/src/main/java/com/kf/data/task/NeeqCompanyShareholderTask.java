@@ -60,7 +60,6 @@ public class NeeqCompanyShareholderTask {
 			for (NeeqCompanyShareholdersOnline neeqCompanyShareholdersOnline : neeqCompanyShareholdersOnlines) {
 
 				try {
-					// 先保存高管基本信息
 					TdxCompanyShareholders tdxCompanyShareholders = new TdxCompanyShareholders();
 					tdxCompanyShareholders.setCompanyId(neeqCompanyShareholdersOnline.getCompanyId());
 					tdxCompanyShareholders.setCompanyShortname(neeqCompanyShareholdersOnline.getCompanyName());
@@ -71,14 +70,25 @@ public class NeeqCompanyShareholderTask {
 					tdxCompanyShareholders.setReportDate(neeqCompanyShareholdersOnline.getDate());
 					tdxCompanyShareholders.setStockCode(neeqCompanyShareholdersOnline.getStockCode());
 					// tdxCompanyShareholders.setUpdatedAt(updatedAt);
-					tdxCompanyShareholders.setStockholderDescribe(neeqCompanyShareholdersOnline.getStockholderType());
-					// 保存高管履历
-					List<NeeqCompanyShareholdersContributiveOnline> neeqCompanyShareholdersContributives = neeqCompanyShareholdersContributiveOnlineService
-							.readNeeqCompanyShareholdersContributiveOnlineById(
-									neeqCompanyShareholdersOnline.getStockholderId());
-					if (neeqCompanyShareholdersContributives.size() > 0) {
-						tdxCompanyShareholders.setMoney(neeqCompanyShareholdersContributives.get(0).getMoney());
+					String sholderType = neeqCompanyShareholdersOnline.getStockholderType();
+					if (sholderType.equals("b1")) {
+						tdxCompanyShareholders.setStockholderDescribe("机构");
+					} else if (sholderType.equals("b2")) {
+						tdxCompanyShareholders.setStockholderDescribe("个人");
+					} else if (sholderType.equals("b3")) {
+						tdxCompanyShareholders.setStockholderDescribe("基金");
+					} else {
+						tdxCompanyShareholders.setStockholderDescribe(sholderType);
 					}
+
+					// List<NeeqCompanyShareholdersContributiveOnline>
+					// neeqCompanyShareholdersContributives =
+					// neeqCompanyShareholdersContributiveOnlineService
+					// .readNeeqCompanyShareholdersContributiveOnlineById(
+					// neeqCompanyShareholdersOnline.getStockholderId());
+					// if (neeqCompanyShareholdersContributives.size() > 0) {
+					// tdxCompanyShareholders.setMoney(neeqCompanyShareholdersContributives.get(0).getMoney());
+					// }
 					tdxCompanyShareholdersService.saveTdxCompanyShareholders(tdxCompanyShareholders);
 
 				} catch (Exception e) {
@@ -86,11 +96,11 @@ public class NeeqCompanyShareholderTask {
 				}
 			}
 			try {
-				NeeqCompanyShareholdersOnline NeeqCompanyShareholdersOnline = neeqCompanyShareholdersOnlines
+				NeeqCompanyShareholdersOnline neeqCompanyShareholdersOnline = neeqCompanyShareholdersOnlines
 						.get(neeqCompanyShareholdersOnlines.size() - 1);
 				tdxUpIndexOnline.setTableName(tableName);
-				tdxUpIndexOnline.setUpid(NeeqCompanyShareholdersOnline.getId());
-				tdxUpIndexOnline.setUptime(NeeqCompanyShareholdersOnline.getUpdatedAt());
+				tdxUpIndexOnline.setUpid(neeqCompanyShareholdersOnline.getId());
+				tdxUpIndexOnline.setUptime(neeqCompanyShareholdersOnline.getUpdatedAt());
 				tdxUpIndexOnlineService.saveTdxUpIndexOnline(tdxUpIndexOnline);
 			} catch (Exception e) {
 				e.printStackTrace();

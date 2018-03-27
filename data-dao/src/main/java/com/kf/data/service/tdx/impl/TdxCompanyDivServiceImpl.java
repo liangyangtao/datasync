@@ -25,7 +25,8 @@ public class TdxCompanyDivServiceImpl implements TdxCompanyDivService {
 	@Override
 	public void saveTdxCompanyDiv(TdxCompanyDiv tdxCompanyDiv) {
 		TdxCompanyDivExample example = new TdxCompanyDivExample();
-		example.or().andIdEqualTo(tdxCompanyDiv.getId());
+		example.or().andStockCodeEqualTo(tdxCompanyDiv.getStockCode())
+				.andReportDateEqualTo(tdxCompanyDiv.getReportDate()).andDivDscrpEqualTo(tdxCompanyDiv.getDivDscrp());
 		if (tdxCompanyDivMapper.countByExample(example) > 0) {
 			tdxCompanyDivMapper.updateByExampleSelective(tdxCompanyDiv, example);
 		} else {

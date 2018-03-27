@@ -11,7 +11,7 @@ import com.kf.data.service.tdx.TdxCompanyExecutiveResumeService;
 /**
  * @Title: TdxCompanyExecutiveResumeServiceImpl.java
  * @Package com.kf.data.service.tdx.impl
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 高管履历
  * @author: liangyt
  * @date: 2018年3月14日 下午5:04:35
  * @version V1.0

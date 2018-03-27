@@ -30,18 +30,20 @@ public class NeeqCompanyDivOnlineServiceImpl implements NeeqCompanyDivOnlineServ
 		List<NeeqCompanyDivOnline> neeqCompanyDivOnlines = null;
 		NeeqCompanyDivOnlineExample example = new NeeqCompanyDivOnlineExample();
 		if (tdxUpIndexOnline.getUptime() == null) {
-			example.or().andStatusEqualTo((byte) 2);
+			example.or().andStatusEqualTo((byte) 1);
 		} else {
 			example.or().andUpdatedAtEqualTo(tdxUpIndexOnline.getUptime()).andIdGreaterThan(tdxUpIndexOnline.getUpid())
-					.andStatusEqualTo((byte) 2);
+					.andStatusEqualTo((byte) 1);
 		}
 		example.setOrderByClause("id asc limit 100");
 		neeqCompanyDivOnlines = neeqCompanyDivOnlineMapper.selectByExample(example);
 		if (neeqCompanyDivOnlines.size() > 0) {
 		} else {
-			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
-			example.setOrderByClause("id asc limit 1");
-			neeqCompanyDivOnlines = neeqCompanyDivOnlineMapper.selectByExample(example);
+			if (tdxUpIndexOnline.getUptime() != null) {
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 1);
+				example.setOrderByClause("id asc limit 1");
+				neeqCompanyDivOnlines = neeqCompanyDivOnlineMapper.selectByExample(example);
+			}
 		}
 		return neeqCompanyDivOnlines;
 	}

@@ -2,5 +2,5 @@ package com.kf.data.config;
 
 public enum DateSourceType {
 
-	CRAWLER, ONLINE, TDX
+	CRAWLER, ONLINE, TDX, QUARTZ
 }

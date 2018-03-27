@@ -10,7 +10,7 @@
 		<property name="endingDelimiter" value="`" />
 		<!--数据库链接URL，用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://10.26.84.23:3306/tdx?autoReconnect=true"
+			connectionURL="jdbc:mysql://10.45.13.89:3306/tdx?autoReconnect=true"
 			userId="etler" password="iVqpEAs6" />
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
@@ -28,12 +28,10 @@
 			targetProject="data-dao\src\main\java" type="XMLMAPPER">
 		</javaClientGenerator>
 
-		<table schema="crawler" tableName="tdx_events_issue_plan"
-			domainObjectName="TdxEventsIssuePlan">
-			<!-- <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" 
-				identity="true" type="post" /> -->
-			<!-- <columnOverride column="status" jdbcType="TINYINT" javaType="Byte"> 
-				</columnOverride> -->
+		<table schema="crawler" tableName="tdx_information_report"
+			domainObjectName="TdxInformationReport">
+			<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()"
+				identity="true" type="post" />
 		</table>
 
 

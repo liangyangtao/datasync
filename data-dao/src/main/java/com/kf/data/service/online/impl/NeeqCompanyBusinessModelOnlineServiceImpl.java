@@ -36,13 +36,16 @@ public class NeeqCompanyBusinessModelOnlineServiceImpl implements NeeqCompanyBus
 					.andStatusEqualTo((byte) 2);
 		}
 		example.setOrderByClause("id asc limit 100");
-		neeqCompanyBusinessModelOnlines = neeqCompanyBusinessModelOnlineMapper.selectByExample(example);
+		neeqCompanyBusinessModelOnlines = neeqCompanyBusinessModelOnlineMapper.selectByExampleWithBLOBs(example);
 		if (neeqCompanyBusinessModelOnlines.size() > 0) {
 
 		} else {
-			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
-			example.setOrderByClause("id asc limit 1");
-			neeqCompanyBusinessModelOnlines = neeqCompanyBusinessModelOnlineMapper.selectByExample(example);
+			if (tdxUpIndexOnline.getUptime() != null) {
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
+				example.setOrderByClause("id asc limit 1");
+				neeqCompanyBusinessModelOnlines = neeqCompanyBusinessModelOnlineMapper
+						.selectByExampleWithBLOBs(example);
+			}
 		}
 		return neeqCompanyBusinessModelOnlines;
 	}

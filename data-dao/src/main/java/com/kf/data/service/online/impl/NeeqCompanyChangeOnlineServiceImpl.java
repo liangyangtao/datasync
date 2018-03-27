@@ -14,7 +14,7 @@ import com.kf.data.service.online.NeeqCompanyChangeOnlineService;
 /**
  * @Title: NeeqCompanyChangeOnlineServiceImpl.java
  * @Package com.kf.data.service.online.impl
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: 变更信息
  * @author: liangyt
  * @date: 2018年3月15日 下午2:03:48
  * @version V1.0
@@ -30,19 +30,21 @@ public class NeeqCompanyChangeOnlineServiceImpl implements NeeqCompanyChangeOnli
 		List<NeeqCompanyChangeOnline> neeqCompanyChangeOnlines = null;
 		NeeqCompanyChangeOnlineExample example = new NeeqCompanyChangeOnlineExample();
 		if (tdxUpIndexOnline.getUptime() == null) {
-			example.or().andStatusEqualTo((byte) 2);
+			example.or().andStatusEqualTo((byte) 1);
 		} else {
 			example.or().andUpdatedAtEqualTo(tdxUpIndexOnline.getUptime()).andIdGreaterThan(tdxUpIndexOnline.getUpid())
-					.andStatusEqualTo((byte) 2);
+					.andStatusEqualTo((byte) 1);
 		}
 		example.setOrderByClause("id asc limit 100");
 		neeqCompanyChangeOnlines = neeqCompanyChangeOnlineMapper.selectByExample(example);
 		if (neeqCompanyChangeOnlines.size() > 0) {
 
 		} else {
-			example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 2);
-			example.setOrderByClause("id asc limit 1");
-			neeqCompanyChangeOnlines = neeqCompanyChangeOnlineMapper.selectByExample(example);
+			if (tdxUpIndexOnline.getUptime() != null) {
+				example.or().andUpdatedAtGreaterThan(tdxUpIndexOnline.getUptime()).andStatusEqualTo((byte) 1);
+				example.setOrderByClause("id asc limit 1");
+				neeqCompanyChangeOnlines = neeqCompanyChangeOnlineMapper.selectByExample(example);
+			}
 		}
 		return neeqCompanyChangeOnlines;
 	}
