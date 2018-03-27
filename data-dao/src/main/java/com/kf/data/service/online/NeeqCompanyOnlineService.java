@@ -15,4 +15,10 @@ import com.kf.data.mybatis.entity.online.TdxUpIndexOnline;
  */
 public interface NeeqCompanyOnlineService {
 	public List<NeeqCompanyOnline> readNeeqCompanyOnlines(TdxUpIndexOnline tdxUpIndexOnline);
+
+	/**
+	 * @param companyid
+	 * @return
+	 */
+	public List<NeeqCompanyOnline> readNeeqCompanyOnlieByCompanyId(String companyid);
 }

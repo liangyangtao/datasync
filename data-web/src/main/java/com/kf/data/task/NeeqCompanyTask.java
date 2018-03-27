@@ -14,6 +14,7 @@ import com.kf.data.mybatis.entity.tdx.TdxCompanyAccountingFirm;
 import com.kf.data.mybatis.entity.tdx.TdxCompanyIndustry;
 import com.kf.data.mybatis.entity.tdx.TdxCompanyInfo;
 import com.kf.data.mybatis.entity.tdx.TdxCompanyLawFirm;
+import com.kf.data.mybatis.entity.tdx.TdxCompanyList;
 import com.kf.data.mybatis.entity.tdx.TdxCompanySaicWithBLOBs;
 import com.kf.data.service.online.NeeqBaseCompanyOnlineService;
 import com.kf.data.service.online.NeeqCompanyOnlineService;
@@ -22,6 +23,7 @@ import com.kf.data.service.tdx.TdxCompanyAccountingFirmService;
 import com.kf.data.service.tdx.TdxCompanyIndustryService;
 import com.kf.data.service.tdx.TdxCompanyInfoService;
 import com.kf.data.service.tdx.TdxCompanyLawFirmService;
+import com.kf.data.service.tdx.TdxCompanyListService;
 import com.kf.data.service.tdx.TdxCompanySaicService;
 
 /**
@@ -62,6 +64,9 @@ public class NeeqCompanyTask {
 	@Autowired
 	TdxCompanyLawFirmService tdxCompanyLawFirmService;
 
+	@Autowired
+	TdxCompanyListService tdxCompanyListService;
+
 	@Scheduled(fixedDelay = 1000)
 	public void executiveSyncTask() {
 
@@ -93,17 +98,15 @@ public class NeeqCompanyTask {
 					tdxCompanyInfo.setArea(neeqCompanyOnline.getArea());
 					tdxCompanyInfo.setCompanyId(neeqCompanyOnline.getCompanyId());
 					tdxCompanyInfo.setCompanyName(neeqCompanyOnline.getName());
+					tdxCompanyInfo.setCityName(neeqCompanyOnline.getCityName());
 					if (neeqBaseCompanyOnline != null) {
 						tdxCompanyInfo.setRegistrationDate(neeqBaseCompanyOnline.getRegistrationDate());
-						// tdxCompanyInfo.setHisName(neeqBaseCompanyOnline.get);
 					}
-
 					tdxCompanyInfo.setShortName(neeqCompanyOnline.getShortname());
 					// tdxCompanyInfo.setUpTime(upTime);
 					tdxCompanyInfo.setWeb(neeqCompanyOnline.getWebsite());
-
+					tdxCompanyInfo.setStockCode(neeqCompanyOnline.getCode());
 					tdxCompanyInfoService.saveTdxCompanyInfo(tdxCompanyInfo);
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -150,6 +153,23 @@ public class NeeqCompanyTask {
 					tdxCompanyIndustry.setCompanyId(neeqCompanyOnline.getCompanyId());
 					tdxCompanyIndustry.setIndustryName(neeqCompanyOnline.getIndustryName());
 					tdxCompanyIndustryService.saveTdxCompanyIndustry(tdxCompanyIndustry);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				/***
+				 * 挂牌信息
+				 * 
+				 */
+				try {
+					TdxCompanyList tdxCompanyList = new TdxCompanyList();
+					tdxCompanyList.setCompanyId(neeqCompanyOnline.getCompanyId());
+					tdxCompanyList.setListingDate(neeqCompanyOnline.getListingDate());
+					tdxCompanyList.setShortName(neeqCompanyOnline.getShortname());
+					tdxCompanyList.setSpecialName(neeqCompanyOnline.getSpecialName());
+					tdxCompanyList.setStockCode(neeqCompanyOnline.getCode());
+					tdxCompanyList.setTransferMode(neeqCompanyOnline.getTransferMode());
+					tdxCompanyListService.saveTdxCompanyList(tdxCompanyList);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

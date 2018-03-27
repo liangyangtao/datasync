@@ -55,9 +55,9 @@ public class NeeqCompanyJudicialAuctionTask {
 					TdxCompanyJudicialAuction tdxCompanyJudicialAuction = new TdxCompanyJudicialAuction();
 					tdxCompanyJudicialAuction.setCompanyId(neeqCompanyJudicialAuctionOnline.getCompanyId());
 					tdxCompanyJudicialAuction.setCompanyName(neeqCompanyJudicialAuctionOnline.getCompanyName());
-					tdxCompanyJudicialAuction.setContent(neeqCompanyJudicialAuctionOnline.getContent());
+					tdxCompanyJudicialAuction.setObject(neeqCompanyJudicialAuctionOnline.getObject());
 					tdxCompanyJudicialAuction.setCourtName(neeqCompanyJudicialAuctionOnline.getCourtName());
-					tdxCompanyJudicialAuction.setNoticeDt(neeqCompanyJudicialAuctionOnline.getAuctionDt());
+					tdxCompanyJudicialAuction.setAuctionDt(neeqCompanyJudicialAuctionOnline.getAuctionDt());
 					tdxCompanyJudicialAuction.setTitle(neeqCompanyJudicialAuctionOnline.getTitle());
 					// tdxCompanyJudicialAuction.setUpdatedAt(updatedAt);
 					tdxCompanyJudicialAuctionService.saveTdxCompanyJudicialAuction(tdxCompanyJudicialAuction);

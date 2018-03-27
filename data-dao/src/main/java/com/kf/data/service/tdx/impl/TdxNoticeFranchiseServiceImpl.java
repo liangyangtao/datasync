@@ -25,6 +25,7 @@ public class TdxNoticeFranchiseServiceImpl implements TdxNoticeFranchiseService 
 	@Override
 	public void saveTdxNoticeFranchise(TdxNoticeFranchise tdxNoticeFranchise) {
 		TdxNoticeFranchiseExample example = new TdxNoticeFranchiseExample();
+		
 		example.or().andCompanyIdEqualTo(tdxNoticeFranchise.getCompanyId())
 				.andAuthorNameEqualTo(tdxNoticeFranchise.getAuthorName())
 				.andAuthorRangeBusiEqualTo(tdxNoticeFranchise.getAuthorRangeBusi())

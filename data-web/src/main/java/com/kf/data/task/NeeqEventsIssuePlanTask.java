@@ -37,8 +37,8 @@ public class NeeqEventsIssuePlanTask {
 	@Autowired
 	NeeqEventsIssuePlanOnlineService neeqEventsIssuePlanOnlineService;
 
-	@Autowired
-	NeeqEventsIssueEffectOnlineService neeqEventsIssueEffectOnlineService;
+//	@Autowired
+//	NeeqEventsIssueEffectOnlineService neeqEventsIssueEffectOnlineService;
 
 	@Autowired
 	TdxEventsIssuePlanService tdxEventsIssuePlanService;
@@ -65,23 +65,19 @@ public class NeeqEventsIssuePlanTask {
 					tdxEventsIssuePlan.setCompanyShortname(neeqEventsIssuePlanOnline.getCompanyShortname());
 					tdxEventsIssuePlan.setDateNew(neeqEventsIssuePlanOnline.getDateNew());
 					tdxEventsIssuePlan.setDatePlan(neeqEventsIssuePlanOnline.getDatePlan());
-					tdxEventsIssuePlan.setFund(neeqEventsIssuePlanOnline.getFundMin());
+					tdxEventsIssuePlan.setFundMax(neeqEventsIssuePlanOnline.getFundMax());
+					tdxEventsIssuePlan.setFundMin(neeqEventsIssuePlanOnline.getFundMin());
 					tdxEventsIssuePlan.setIfDependent(neeqEventsIssuePlanOnline.getIfDependent());
 					tdxEventsIssuePlan.setObjName(neeqEventsIssuePlanOnline.getObjName());
-					tdxEventsIssuePlan.setPrice(neeqEventsIssuePlanOnline.getPriceMin());
+					tdxEventsIssuePlan.setPriceMax(neeqEventsIssuePlanOnline.getPriceMax());
+					tdxEventsIssuePlan.setPriceMin(neeqEventsIssuePlanOnline.getPriceMin());
+					tdxEventsIssuePlan.setPricingRule(neeqEventsIssuePlanOnline.getPricingRule());
 					tdxEventsIssuePlan.setProgressName(neeqEventsIssuePlanOnline.getProgressName());
 					tdxEventsIssuePlan.setPurpose(neeqEventsIssuePlanOnline.getPurpose());
-					tdxEventsIssuePlan.setQuant(neeqEventsIssuePlanOnline.getQuantMin());
+					tdxEventsIssuePlan.setQuantMax(neeqEventsIssuePlanOnline.getQuantMax());
+					tdxEventsIssuePlan.setQuantMin(neeqEventsIssuePlanOnline.getQuantMin());
 					tdxEventsIssuePlan.setStockCode(neeqEventsIssuePlanOnline.getStockCode());
-					// tdxEventsIssuePlan.setUpdatedAt(updatedAt);
-					List<NeeqEventsIssueEffectOnline> neeqEventsIssueEffectOnlines = neeqEventsIssueEffectOnlineService
-							.readNeeqEventsIssueEffectOnlineByid(neeqEventsIssuePlanOnline.getEventsId());
-					if (neeqEventsIssueEffectOnlines.size() > 0) {
-						NeeqEventsIssueEffectOnline neeqEventsIssueEffectOnline = neeqEventsIssueEffectOnlines.get(0);
-						tdxEventsIssuePlan.setDateEffNotice(neeqEventsIssueEffectOnline.getDateEffect());
-						tdxEventsIssuePlan.setDateRegist(neeqEventsIssueEffectOnline.getDateRegist());
-						tdxEventsIssuePlan.setRatioChange(neeqEventsIssueEffectOnline.getRatioChange());
-					}
+//					tdxEventsIssuePlan.setUpdatedAt(updatedAt);
 					tdxEventsIssuePlanService.saveTdxEventsIssuePlan(tdxEventsIssuePlan);
 
 				} catch (Exception e) {

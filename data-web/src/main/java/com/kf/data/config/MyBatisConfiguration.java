@@ -5,13 +5,10 @@ import java.util.Map;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
@@ -19,21 +16,20 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.kf.data.elasticsearch.tools.ServerConfig;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "com.kf.data" })
 @PropertySource(value = { "classpath:application.properties" })
-@MapperScan({ "com.kf.data.mybatis.mapper" })
 public class MyBatisConfiguration {
 
 	@Autowired
 	private Environment environment;
 
 	@Bean
-	public DataSource dataSourceCrawler() {
-		DataSource dataSource = new DataSource();
+	public DruidDataSource dataSourceCrawler() {
+		DruidDataSource dataSource = new DruidDataSource();
 		dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
 		dataSource.setUrl(environment.getRequiredProperty("jdbc.crawler.url"));
 		dataSource.setUsername(environment.getRequiredProperty("jdbc.crawler.username"));
@@ -54,8 +50,8 @@ public class MyBatisConfiguration {
 	}
 
 	@Bean
-	public DataSource dataSourceOnline() {
-		DataSource dataSource = new DataSource();
+	public DruidDataSource dataSourceOnline() {
+		DruidDataSource dataSource = new DruidDataSource();
 		dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
 		dataSource.setUrl(environment.getRequiredProperty("jdbc.online.url"));
 		dataSource.setUsername(environment.getRequiredProperty("jdbc.online.username"));
@@ -76,12 +72,34 @@ public class MyBatisConfiguration {
 	}
 
 	@Bean
-	public DataSource dataSourceTdx() {
-		DataSource dataSource = new DataSource();
+	public DruidDataSource dataSourceTdx() {
+		DruidDataSource dataSource = new DruidDataSource();
 		dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
 		dataSource.setUrl(environment.getRequiredProperty("jdbc.tdx.url"));
 		dataSource.setUsername(environment.getRequiredProperty("jdbc.tdx.username"));
 		dataSource.setPassword(environment.getRequiredProperty("jdbc.tdx.password"));
+		dataSource.setMaxIdle(Integer.parseInt(environment.getRequiredProperty("jdbc.pool.maxIdle")));
+		dataSource.setMaxActive(Integer.parseInt(environment.getRequiredProperty("jdbc.pool.maxActive")));
+		dataSource.setMaxWait(Integer.parseInt(environment.getRequiredProperty("jdbc.maxWait")));
+		dataSource.setRemoveAbandoned(Boolean.parseBoolean(environment.getRequiredProperty("jdbc.removeAbandoned")));
+		dataSource.setRemoveAbandonedTimeout(
+				Integer.parseInt(environment.getRequiredProperty("jdbc.removeAbandonedTimeout")));
+		dataSource.setTimeBetweenEvictionRunsMillis(
+				Integer.parseInt(environment.getRequiredProperty("jdbc.timeBetweenEvictionRunsMillis")));
+		dataSource.setMinEvictableIdleTimeMillis(
+				Integer.parseInt(environment.getRequiredProperty("jdbc.minEvictableIdleTimeMillis")));
+		dataSource.setTestOnBorrow(Boolean.parseBoolean(environment.getRequiredProperty("jdbc.testOnBorrow")));
+		dataSource.setValidationQuery(environment.getRequiredProperty("jdbc.validationQuery"));
+		return dataSource;
+	}
+
+	@Bean
+	public DruidDataSource dataSourceQuartz() {
+		DruidDataSource dataSource = new DruidDataSource();
+		dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
+		dataSource.setUrl(environment.getRequiredProperty("jdbc.quartz.url"));
+		dataSource.setUsername(environment.getRequiredProperty("jdbc.quartz.username"));
+		dataSource.setPassword(environment.getRequiredProperty("jdbc.quartz.password"));
 		dataSource.setMaxIdle(Integer.parseInt(environment.getRequiredProperty("jdbc.pool.maxIdle")));
 		dataSource.setMaxActive(Integer.parseInt(environment.getRequiredProperty("jdbc.pool.maxActive")));
 		dataSource.setMaxWait(Integer.parseInt(environment.getRequiredProperty("jdbc.maxWait")));
@@ -103,13 +121,15 @@ public class MyBatisConfiguration {
 	 */
 	@Bean
 	@Primary
-	public DynamicDataSource dataSource(@Qualifier("dataSourceCrawler") DataSource dataSourceCrawler,
-			@Qualifier("dataSourceOnline") DataSource dataSourceOnline,
-			@Qualifier("dataSourceTdx") DataSource dataSourceTdx) {
+	public DynamicDataSource dataSource(@Qualifier("dataSourceCrawler") DruidDataSource dataSourceCrawler,
+			@Qualifier("dataSourceOnline") DruidDataSource dataSourceOnline,
+			@Qualifier("dataSourceTdx") DruidDataSource dataSourceTdx,
+			@Qualifier("dataSourceQuartz") DruidDataSource dataSourceQuartz) {
 		Map<Object, Object> targetDataSources = new HashMap<>();
 		targetDataSources.put(DateSourceType.CRAWLER, dataSourceCrawler);
 		targetDataSources.put(DateSourceType.ONLINE, dataSourceOnline);
 		targetDataSources.put(DateSourceType.TDX, dataSourceTdx);
+		targetDataSources.put(DateSourceType.QUARTZ, dataSourceQuartz);
 		DynamicDataSource dataSource = new DynamicDataSource();
 		dataSource.setTargetDataSources(targetDataSources);
 		dataSource.setDefaultTargetDataSource(dataSourceOnline);
@@ -137,11 +157,11 @@ public class MyBatisConfiguration {
 		ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(128);
 		return scheduledThreadPoolExecutor;
 	}
-	
+
 	@Bean
 	public ServerConfig serverConfig() {
 
-		ServerConfig serverConfig = new ServerConfig();	
+		ServerConfig serverConfig = new ServerConfig();
 		serverConfig.setEsUrl(environment.getRequiredProperty("es.url"));
 		serverConfig.setPort(Integer.parseInt(environment.getRequiredProperty("es.port")));
 		serverConfig.setClusterName(environment.getRequiredProperty("es.clusterName"));
@@ -166,6 +186,5 @@ public class MyBatisConfiguration {
 		return serverConfig;
 
 	}
-	
 
 }

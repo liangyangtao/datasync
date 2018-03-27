@@ -27,8 +27,8 @@ public class TdxCompanyExecutiveServiceImpl implements TdxCompanyExecutiveServic
 	public void saveTdxCompanyExecutive(TdxCompanyExecutive tdxCompanyExecutive) {
 		TdxCompanyExecutiveExample example = new TdxCompanyExecutiveExample();
 		example.or().andStockCodeEqualTo(tdxCompanyExecutive.getStockCode())
-				.andNameEqualTo(tdxCompanyExecutive.getName())
-				.andReportDateEqualTo(tdxCompanyExecutive.getReportDate());
+				.andNameEqualTo(tdxCompanyExecutive.getName()).andReportDateEqualTo(tdxCompanyExecutive.getReportDate())
+				.andTitleEqualTo(tdxCompanyExecutive.getTitle());
 		if (tdxCompanyExecutiveMapper.countByExample(example) > 0) {
 			tdxCompanyExecutiveMapper.updateByExampleSelective(tdxCompanyExecutive, example);
 		} else {

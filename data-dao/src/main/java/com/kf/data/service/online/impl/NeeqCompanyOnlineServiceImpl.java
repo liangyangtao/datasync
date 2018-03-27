@@ -49,4 +49,11 @@ public class NeeqCompanyOnlineServiceImpl implements NeeqCompanyOnlineService {
 		return neeqCompanyOnlines;
 	}
 
+	@Override
+	public List<NeeqCompanyOnline> readNeeqCompanyOnlieByCompanyId(String companyid) {
+		NeeqCompanyOnlineExample example = new NeeqCompanyOnlineExample();
+		example.or().andCompanyIdEqualTo(companyid);
+		return neeqCompanyOnlineMapper.selectByExampleWithBLOBs(example);
+	}
+
 }

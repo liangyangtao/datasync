@@ -62,6 +62,7 @@ public class KfCompanyDishonestyTask {
 					tdxCompanyDishonesty.setReleaseDate(kfCompanyDishonestyOnline.getReleaseDate());
 					tdxCompanyDishonesty.setJudicialText(kfCompanyDishonestyOnline.getJudicialText());
 					tdxCompanyDishonesty.setPerformance(kfCompanyDishonestyOnline.getPerformance());
+					tdxCompanyDishonesty.setDishonestyBehavior(kfCompanyDishonestyOnline.getDishonestyBehavior());
 					// tdxCompanyDishonesty.setUpdatedAt(updatedAt);
 					tdxCompanyDishonestyService.saveTdxCompanyDishonesty(tdxCompanyDishonesty);
 				} catch (Exception e) {

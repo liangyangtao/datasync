@@ -7,6 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.kf.data.controller.CompanyController;
 import com.kf.data.mybatis.entity.online.NeeqCompanyBranchOnline;
 import com.kf.data.mybatis.entity.online.TdxUpIndexOnline;
 import com.kf.data.mybatis.entity.tdx.TdxCompanyBranch;
@@ -37,6 +38,9 @@ public class NeeqCompanyBranchTask {
 	@Autowired
 	TdxCompanyBranchService tdxCompanyBranchService;
 
+	@Autowired
+	CompanyController companyController;
+
 	@Scheduled(fixedDelay = 1000)
 	public void executiveSyncTask() {
 		List<TdxUpIndexOnline> tdxUpIndexs = tdxUpIndexOnlineService.readTdxUpIndexOnlineByTableName(tableName);
@@ -58,6 +62,12 @@ public class NeeqCompanyBranchTask {
 					tdxCompanyBranch.setCompanyName(neeqCompanyBranchOnline.getCompanyName());
 					tdxCompanyBranch.setStockCode(neeqCompanyBranchOnline.getStockCode());
 					tdxCompanyBranchService.saveTdxCompanyBranch(tdxCompanyBranch);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				try {
+					companyController.saveCompanyByCompanyid(neeqCompanyBranchOnline.getBranchId());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

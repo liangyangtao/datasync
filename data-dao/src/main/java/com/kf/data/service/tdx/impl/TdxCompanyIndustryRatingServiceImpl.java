@@ -27,7 +27,10 @@ public class TdxCompanyIndustryRatingServiceImpl implements TdxCompanyIndustryRa
 		TdxCompanyIndustryRatingExample example = new TdxCompanyIndustryRatingExample();
 		example.or().andCompanyIdEqualTo(tdxCompanyIndustryRating.getCompanyId())
 				.andReportDateEqualTo(tdxCompanyIndustryRating.getReportDate())
-				.andReportTitleEqualTo(tdxCompanyIndustryRating.getReportTitle());
+				.andReportTitleEqualTo(tdxCompanyIndustryRating.getReportTitle())
+				.andReporterNameEqualTo(tdxCompanyIndustryRating.getReporterName())
+				.andResearchInstituteShortnameEqualTo(tdxCompanyIndustryRating.getResearchInstituteShortname());
+
 		if (tdxCompanyIndustryRatingMapper.countByExample(example) > 0) {
 			tdxCompanyIndustryRatingMapper.updateByExampleSelective(tdxCompanyIndustryRating, example);
 		} else {

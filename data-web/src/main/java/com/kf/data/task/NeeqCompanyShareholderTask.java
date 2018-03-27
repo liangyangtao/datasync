@@ -70,13 +70,25 @@ public class NeeqCompanyShareholderTask {
 					tdxCompanyShareholders.setReportDate(neeqCompanyShareholdersOnline.getDate());
 					tdxCompanyShareholders.setStockCode(neeqCompanyShareholdersOnline.getStockCode());
 					// tdxCompanyShareholders.setUpdatedAt(updatedAt);
-					tdxCompanyShareholders.setStockholderDescribe(neeqCompanyShareholdersOnline.getStockholderType());
-//					List<NeeqCompanyShareholdersContributiveOnline> neeqCompanyShareholdersContributives = neeqCompanyShareholdersContributiveOnlineService
-//							.readNeeqCompanyShareholdersContributiveOnlineById(
-//									neeqCompanyShareholdersOnline.getStockholderId());
-//					if (neeqCompanyShareholdersContributives.size() > 0) {
-//						tdxCompanyShareholders.setMoney(neeqCompanyShareholdersContributives.get(0).getMoney());
-//					}
+					String sholderType = neeqCompanyShareholdersOnline.getStockholderType();
+					if (sholderType.equals("b1")) {
+						tdxCompanyShareholders.setStockholderDescribe("机构");
+					} else if (sholderType.equals("b2")) {
+						tdxCompanyShareholders.setStockholderDescribe("个人");
+					} else if (sholderType.equals("b3")) {
+						tdxCompanyShareholders.setStockholderDescribe("基金");
+					} else {
+						tdxCompanyShareholders.setStockholderDescribe(sholderType);
+					}
+
+					// List<NeeqCompanyShareholdersContributiveOnline>
+					// neeqCompanyShareholdersContributives =
+					// neeqCompanyShareholdersContributiveOnlineService
+					// .readNeeqCompanyShareholdersContributiveOnlineById(
+					// neeqCompanyShareholdersOnline.getStockholderId());
+					// if (neeqCompanyShareholdersContributives.size() > 0) {
+					// tdxCompanyShareholders.setMoney(neeqCompanyShareholdersContributives.get(0).getMoney());
+					// }
 					tdxCompanyShareholdersService.saveTdxCompanyShareholders(tdxCompanyShareholders);
 
 				} catch (Exception e) {

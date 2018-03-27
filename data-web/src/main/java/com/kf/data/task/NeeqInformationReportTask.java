@@ -76,6 +76,7 @@ public class NeeqInformationReportTask {
 						.get(neeqInformationReportOnlines.size() - 1);
 				tdxUpIndexOnline.setTableName(tableName);
 				tdxUpIndexOnline.setUpid(neeqInformationReportOnline.getId());
+				tdxUpIndexOnline.setUptime(neeqInformationReportOnline.getUpdatedAt());
 				tdxUpIndexOnlineService.saveTdxUpIndexOnline(tdxUpIndexOnline);
 			} catch (Exception e) {
 				e.printStackTrace();

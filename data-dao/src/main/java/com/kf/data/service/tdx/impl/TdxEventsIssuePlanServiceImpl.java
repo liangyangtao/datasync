@@ -24,12 +24,12 @@ public class TdxEventsIssuePlanServiceImpl implements TdxEventsIssuePlanService 
 
 	@Override
 	public void saveTdxEventsIssuePlan(TdxEventsIssuePlan tdxEventsIssuePlan) {
-		// stock_code, date_plan, date_new, if_dependent, obj_name(150)
 		TdxEventsIssuePlanExample example = new TdxEventsIssuePlanExample();
 		example.or().andStockCodeEqualTo(tdxEventsIssuePlan.getStockCode())
 				.andDatePlanEqualTo(tdxEventsIssuePlan.getDatePlan()).andDateNewEqualTo(tdxEventsIssuePlan.getDateNew())
 				.andIfDependentEqualTo(tdxEventsIssuePlan.getIfDependent())
-				.andObjNameEqualTo(tdxEventsIssuePlan.getObjName());
+				.andObjNameEqualTo(tdxEventsIssuePlan.getObjName())
+				.andProgressNameEqualTo(tdxEventsIssuePlan.getProgressName());
 
 		if (tdxEventsIssuePlanMapper.countByExample(example) > 0) {
 			tdxEventsIssuePlanMapper.updateByExampleSelective(tdxEventsIssuePlan, example);
